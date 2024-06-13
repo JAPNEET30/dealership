@@ -6,4 +6,27 @@
     /* border: 2px solid black; */
     /* border-radius: 5px; */
     flex-direction: column; 
+    width:30%;
   }
+
+footer{
+  margin-top:auto;
+  display:flex;
+  border-radius:10px;
+  background: linear-gradient(90deg,rgb(4, 142, 255),white,rgb(4, 142, 255));
+  height: 10%;
+  width:90%;
+  margin-left:5%;
+  margin-right:5%;
+  flex-direction: column;
+}
+.dom{
+  flex-direction: column;
+  min-height: 89vh;
+  display:flex;
+}
+/* body{
+  flex-direction: column;
+  min-height: 97vh;
+  display:flex;
+} */
