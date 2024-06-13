@@ -24,27 +24,63 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2">
-          {% block sidebar %}
-          <ul class="sidebar-nav">
-            <li class="btn flex" style="overflow: hidden;" id="dashboardLink"><a href="{% url 'index' %}" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/></svg>
-            </a></li> 
-            <li class="btn" style="overflow: hidden;" id="stockLink"><a class="btn btn-dark" href="">Stock</a></li>
-            <li class="btn" style="overflow: hidden;" id="workshoplink"><a class="btn btn-dark" href="">Workshop</a></li>
-            <li class="btn" style="overflow: hidden;" id="servicelink"><a class="btn btn-dark" href="">Service Tracker</a></li>
-            <li class="btn" style="overflow: hidden;" id="insurancelink"><a class="btn btn-dark" href="">Insurance</a></li>
-            <li class="btn" style="overflow: hidden;" id="departmentlink"><a class="btn btn-dark" href="">Department</a></li>
-          </ul>
-          <button class="btn btn-light"><lord-icon
+        {% block sidebar %}
+        <div class="col-sm-1" style="display:flex; flex-direction:column; margin-top:1rem;">
+        <div style="display:flex; flex-direction: column; min-height: 87vh;">
+          <a href="{% url 'index' %}" class="btn btn-outline-light" aria-describedby="Dashboardspan">
+            <lord-icon src="https://cdn.lordicon.com/dqrpfjei.json"
+                trigger="hover"
+                delay="500"
+                state="hover-roll"
+                style="width:50px;height:50px">
+            </lord-icon></a><span role="tooltip" id="Dashboardspan">Dashboard</span>
+            <a class="btn btn-outline-light" href="{% url 'stock'%}" aria-describedby="stockspan">
+              <lord-icon
+                  src="https://cdn.lordicon.com/ajfmgpbq.json"
+                  trigger="hover"
+                  delay="500"
+                  stroke="bold"
+                  state="hover-growth"
+                  style="width:50px;height:50px">
+            </lord-icon></a><span role="tooltip" id="stockspan">Stock</span>
+            <a class="btn btn-outline-light btn-links" href="{% url 'workshop'%}" aria-describedby="workshopspan">
+              <lord-icon
+                  src="https://cdn.lordicon.com/raldojya.json"
+                  trigger="hover"
+                  stroke="bold"
+                  style="width:50px;height:50px">
+            </lord-icon></a><span id="workshopspan" role="tooltip">Workshop</span>
+            <a class="btn btn-outline-light" href="{% url 'insurance'%}" aria-describedby="insurancespan">
+              <lord-icon
+              src="https://cdn.lordicon.com/fhszghjk.json"
+              trigger="hover"
+              style="width:50px;height:50px">
+          </lord-icon></a><span id="insurancespan" role="tooltip">Insurance</span>
+            <a class="btn btn-outline-light" href="{% url 'department'%}" aria-describedby="departmentspan"><lord-icon
+                  src="https://cdn.lordicon.com/hojnqwxj.json"
+                  trigger="hover"
+                  stroke="bold"
+                  style="width:50px;height:50px">
+              </lord-icon></a><span id="departmentspan" role="tooltip">Department</span>
+            <a class="btn btn-outline-light btn-links" href="{% url 'service'%}" aria-describedby="servicespan"><lord-icon
+              src="https://cdn.lordicon.com/xsqjakgm.json"
+              trigger="hover"
+              delay="800"
+              stroke="bold"
+              state="hover-unfold"
+              style="width:50px;height:50px">
+          </lord-icon></a><span id="servicespan" role="tooltip">Service</span>
+        </div>
+        <form>
+          <button class="btn btn-outline-light" style="margin-top:auto;"><lord-icon
             src="https://cdn.lordicon.com/xzalkbkz.json"
             trigger="hover"
-            style="width:100px;height:100px">
-        </lord-icon></button>
-          {% endblock %}
-        </div>
-        <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+            style="width:50px;height:50px">
+          </lord-icon></button>
+        </form>
+      </div>
+        {% endblock %}
+        <div class="col-sm-10">{% block content %}{% endblock %}</div>
       </div>
     </div>
     <script>

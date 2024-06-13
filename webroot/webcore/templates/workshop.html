@@ -1,0 +1,48 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="dom">
+  <h1>Workshop</h1>
+  <div style="display:flex; flex-direction: column;" class="accordion" id="locationAccordion">
+    <div class="accordion-item" style="padding:1rem;">
+        <h3>Jagdalpur</h3>
+        <div class="rounded">
+            <table class="table table-striped table-primary table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Model</th>
+                        <th>Varient</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <td>Activa</td>
+                        <td>Disc</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>Pleasure</td>
+                        <td>Drum</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    
+  </div>
+</div>
+  <footer class="btn-group">
+    <div style="margin-bottom: auto;">
+
+    </div>
+    <a href="https://lordicon.com/" class="col-md-3 offset-md-9 text-success">
+      <em>Icons by Lordicon.com</em>
+    </a>
+  </footer>
+{% endblock %}

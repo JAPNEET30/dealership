@@ -1,20 +1,18 @@
 .sidebar-nav {
-    display: flex;
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
-    /* border: 2px solid black; */
-    /* border-radius: 5px; */
-    flex-direction: column; 
-    width:30%;
-  }
+  display: flex;
+  margin-top: 20px;
+  margin-left: 5px;
+  list-style: none;
+  flex-direction: column; 
+
+} 
 
 footer{
   margin-top:auto;
   display:flex;
   border-radius:10px;
   background: linear-gradient(90deg,rgb(4, 142, 255),white,rgb(4, 142, 255));
-  height: 10%;
+  height: 3rem;
   width:90%;
   margin-left:5%;
   margin-right:5%;
@@ -30,3 +28,27 @@ footer{
   min-height: 97vh;
   display:flex;
 } */
+.btn-links:hover{
+  visibility:visible;
+}
+
+[role="tooltip"],
+.hidetooltip.hidetooltip.hidetooltip + [role="tooltip"] {
+  visibility: hidden;
+  position: relative;
+  width:auto;
+  /* top: 1rem; */
+  left: 1%;
+  background: linear-gradient(90deg,rgb(189, 154, 255),rgb(85, 207, 255));
+  color: black;
+  padding:5px;
+  border-radius: 5px;
+}
+[aria-describedby]:hover,
+[aria-describedby]:focus {
+  position: relative;
+}
+[aria-describedby]:hover + [role="tooltip"],
+[aria-describedby]:focus + [role="tooltip"] {
+  visibility: visible;
+}
