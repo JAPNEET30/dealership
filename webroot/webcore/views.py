@@ -2,7 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    context={
+        "name" : 6333,
+        "user" : "user",
+    }
+    return render(request, 'index.html', context=context)
 
 def stock(request):
     return render(request, 'stock.html')

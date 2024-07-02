@@ -25,8 +25,8 @@
     <div class="container-fluid">
       <div class="row">
         {% block sidebar %}
-        <div class="col-sm-1" style="display:flex; flex-direction:column; margin-top:1rem;">
-        <div style="display:flex; flex-direction: column; min-height: 87vh;">
+        <div class="col-sm-1" style="display:flex; flex-direction:column;">
+        <div style="display:flex; flex-direction: column; min-height: 87vh;" class="sidebar-nav">
           <a href="{% url 'index' %}" class="btn btn-outline-light" aria-describedby="Dashboardspan">
             <lord-icon src="https://cdn.lordicon.com/dqrpfjei.json"
                 trigger="hover"
@@ -71,7 +71,7 @@
               style="width:50px;height:50px">
           </lord-icon></a><span id="servicespan" role="tooltip">Service</span>
         </div>
-        <form>
+        <form style="position: fixed; margin-top: 87vh;">
           <button class="btn btn-outline-light" style="margin-top:auto;"><lord-icon
             src="https://cdn.lordicon.com/xzalkbkz.json"
             trigger="hover"
@@ -80,14 +80,15 @@
         </form>
       </div>
         {% endblock %}
-        <div class="col-sm-10">{% block content %}{% endblock %}</div>
+        <div class="col-sm-10">{% block content %}
+          {% endblock %}</div>
       </div>
     </div>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
-    </script>
+    </script> -->
     <!-- <link href="{% static 'js/main.js' %}" /> -->
     
   </body>

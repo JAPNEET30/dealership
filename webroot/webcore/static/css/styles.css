@@ -1,26 +1,28 @@
 .sidebar-nav {
   display: flex;
-  margin-top: 20px;
-  margin-left: 5px;
-  list-style: none;
-  flex-direction: column; 
-
+  margin-top: 10px;
+  flex-direction:column; 
+  width:fit-content;
+  position:fixed;
 } 
 
 footer{
-  margin-top:auto;
+  position:fixed;
+  /* margin-top:auto; */
   display:flex;
   border-radius:10px;
-  background: linear-gradient(90deg,rgb(4, 142, 255),white,rgb(4, 142, 255));
+  /* background: linear-gradient(90deg,rgb(4, 142, 255),white,rgb(4, 142, 255)); */
   height: 3rem;
-  width:90%;
-  margin-left:5%;
-  margin-right:5%;
+  width:80%;
+  margin-left:2%;
+  margin-right:2%;
   flex-direction: column;
+  bottom:0;
 }
 .dom{
   flex-direction: column;
-  min-height: 89vh;
+  /* min-height: 85vh; */
+  padding-bottom: 4rem;
   display:flex;
 }
 /* body{
