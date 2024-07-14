@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webcore.apps.WebcoreConfig',
     'usercore.apps.UsercoreConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

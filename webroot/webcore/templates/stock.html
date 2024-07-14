@@ -1,11 +1,73 @@
 {% extends "base_generic.html" %}
 {% load static %}
 {% block content %}
-<div class="dom" id="dom">
+<div class="dom p-2" id="">
+  <div style="display:flex;">
+    <div class="card p-3 m-1" style="width:18rem;">
+      <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
+                  trigger="loop"
+                  delay="2000"
+                  stroke="bold"
+                  state="hover-growth"
+                  style="width:80px;height:80px; margin-top:2px;"
+                  class="card-img-top">
+      </lord-icon>
+      <span class="card-body card-title">Current Stock</span>
+      <p class="card-body card-text">To View your current Stock</p>
+      <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
+    </div>
+    <div class="card p-3 m-1" style="width:18rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" strokeWidth={1.5} stroke="currentColor" className="size-4" width="100px" height="100px">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+      </svg>
+      
+      <span class="card-body card-title">Incoming Stock</span>
+      <p class="card-body card-text">To manage incoming Stock</p>
+      <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
+    </div>
+    <div class="card p-3 m-1" style="width:18rem;">
+      <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
+                  trigger="loop"
+                  delay="2000"
+                  stroke="bold"
+                  state="hover-growth"
+                  style="width:80px;height:80px; margin-top:2px;"
+                  class="card-img-top">
+      </lord-icon>
+      <span class="card-body card-title">Outgoing Stock</span>
+      <p class="card-body card-text">To manage outgoing stock</p>
+      <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
+    </div>
+    <div class="card p-3 m-1" style="width:18rem;">
+      <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
+                  trigger="loop"
+                  delay="2000"
+                  stroke="bold"
+                  state="hover-growth"
+                  style="width:80px;height:80px; margin-top:2px;"
+                  class="card-img-top">
+      </lord-icon>
+      <span class="card-body card-title">Damaged Stock</span>
+      <p class="card-body card-text">To view the status of damaged stock.</p>
+      <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
+    </div>
+    <div class="card p-3 m-1" style="width:18rem;">
+      <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
+                  trigger="loop"
+                  delay="2000"
+                  stroke="bold"
+                  state="hover-growth"
+                  style="width:80px;height:80px; margin-top:2px;"
+                  class="card-img-top">
+      </lord-icon>
+      <span class="card-body card-title">Sold or Delivered Stock</span>
+      <p class="card-body card-text">To view all the sold stock.</p>
+      <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
+    </div>
+  </div>
 </div>
   <footer>
     <div style="margin-bottom: auto;" class="btn-group" id="footerbtn" role="group">
-      <h5>buttons</h5>
     </div>
     <a href="https://lordicon.com/" class="col-md-3 offset-md-9 text-success">
       <em>Icons by Lordicon.com</em>

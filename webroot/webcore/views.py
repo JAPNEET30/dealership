@@ -25,3 +25,6 @@ def department(request):
 
 def signout(request):
     return render(request, 'signout.html')
+
+def stockadd(request):
+    return render(request, 'stock_add.html')

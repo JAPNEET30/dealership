@@ -67,8 +67,8 @@ deletebtn='<button class="btn btn-primary" type="button" onclick="home()">Home</
       <button class="btn btn-primary" type="button" onclick="update()">Update</button>\
       <button class="btn btn-danger active" type="button" >Delete</button>';
 
-document.getElementById("dom").innerHTML=homecontent;
-document.getElementById("footerbtn").innerHTML=homebtn;
+// document.getElementById("dom").innerHTML=homecontent;
+// document.getElementById("footerbtn").innerHTML=homebtn;
 
 function home(){
     document.getElementById("dom").innerHTML=homecontent;
