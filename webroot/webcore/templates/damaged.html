@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<div class="dom" id="dom">
+</div>
+  <footer>
+    <div style="margin-bottom: auto;" class="btn-group" id="footerbtn" role="group">
+      <h5>buttons</h5>
+    </div>
+    <a href="https://lordicon.com/" class="col-md-3 offset-md-9 text-success">
+      <em>Icons by Lordicon.com</em>
+    </a>
+  </footer>
+  <script src="{% static 'js/stocks.js' %}"></script>
+{% endblock %}

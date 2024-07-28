@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webcore.apps.WebcoreConfig',
     'usercore.apps.UsercoreConfig',
+    'homepage.apps.HomepageConfig',
     'django_extensions',
 ]
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'webroot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -125,3 +126,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Login & Logout URLs
+LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/dealership/'
+LOGOUT_REDIRECT_URL = '/user/logout/'
+AUTH_USER_MODEL = 'usercore.User'

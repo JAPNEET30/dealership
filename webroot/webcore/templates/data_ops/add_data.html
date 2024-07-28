@@ -1,0 +1,46 @@
+{% extends '../base_generic.html' %}
+
+{% block content %}
+<div class="row m-2">
+    
+    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="inputid">
+        <input type="radio" id="manual-entry-check" class="btn-check" autocomplete="off" checked name="inputradiotype" value="manual">
+        <label for="manual-entry-check" class="btn btn-outline-primary">Manual Entry</label>
+        <input type="radio" id="excel-upload-check" class="btn-check" autocomplete="off" name="inputradiotype" value="excel">
+        <label for="excel-upload-check" class="btn btn-outline-primary">Excel Upload</label>
+    </div>
+    
+    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="stockid">
+        <input type="radio" id="incoming-check" class="btn-check" autocomplete="off" name="stockradiotype" checked value="incoming">
+        <label for="incoming-check" class="btn btn-outline-primary">Incoming Stock</label>
+        <input type="radio" id="current-check" class="btn-check" autocomplete="off" name="stockradiotype" value="current">
+        <label for="current-check" class="btn btn-outline-primary">Add to Current Stock</label>
+        <input type="radio" id="outgoing-check" class="btn-check" autocomplete="off" name="stockradiotype" value="outgoing">
+        <label for="outgoing-check" class="btn btn-outline-primary">Outgoing Stock</label>
+    </div>
+    <div class="form" id="formid">
+        <p>Form</p>
+        {{ form }}
+    </div>
+    <p id="result"></p>
+    
+
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+    $('#stockid').show();
+    $(document).ready(function(){
+        $('div[id=inputid]').change(function(){
+        var entry_type = $('input[type=radio][name=inputradiotype]:checked').val();
+        if (entry_type =='excel'){
+            $('#stockid').hide();
+            
+        }
+        else{
+            $('#stockid').show();
+        }
+        });
+    });
+</script>
+{% endblock%}

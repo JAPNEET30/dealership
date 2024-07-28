@@ -5,15 +5,10 @@
 {% endblock %}
 {% block content %}
 <div class="dom">
-  <h1></h1>
-  <p>
-    A management app for dealerships
-    <em>By Japneet Singh!</em>
-    <!-- <p async>{{ name }}</p> -->
-  </p>
+  <p>A management app for dealerships<em>By Japneet Singh!</em></p>
   <div class="row">
-  <div style="display:flex;" class="col-10 g-2 overflow-hidden">
-    <div class="card p-3 m-1" style="width:18rem;">
+  <div style="display:flex;" class="col-sm-12 g-2 overflow-hidden">
+    <div class="card p-3 m-1 col-sm" style="width:18rem;">
       <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
                   trigger="loop"
                   delay="2000"
@@ -26,7 +21,7 @@
       <p class="card-body card-text">To manage your incoming and outgoing of supply.</p>
       <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
     </div>
-    <div class="card p-3 m-1" style="width:18rem;">
+    <div class="card p-3 m-1 col-sm" style="width:18rem;">
       <lord-icon src="https://cdn.lordicon.com/raldojya.json"
                   trigger="loop"
                   stroke="bold"
@@ -37,7 +32,7 @@
       <p class="card-body card-text">To manage your inventory of parts.</p>
       <a class="btn btn-primary" href="{% url 'workshop' %}">Open</a>
     </div>
-    <div class="card p-3 m-1" style="width:18rem;">
+    <div class="card p-3 m-1 col-sm" style="width:18rem;">
       <lord-icon src="https://cdn.lordicon.com/fhszghjk.json"
               trigger="loop"
               delay="2000"
@@ -47,7 +42,7 @@
       <p class="card-body card-text">Helps to track and manage your insurance issues.</p>
       <a class="btn btn-primary" href="{% url 'insurance' %}">Open</a>
     </div>
-    <div class="card p-3 m-1" style="width:18rem;">
+    <div class="card p-3 m-1 col-sm" style="width:18rem;">
       <lord-icon src="https://cdn.lordicon.com/hojnqwxj.json"
                   trigger="loop"
                   stroke="bold"
@@ -58,7 +53,7 @@
       <p class="card-body card-text">Helps in managing different teams. Provides a view to manage every person's access.</p>
       <a class="btn btn-primary" href="{% url 'department' %}">Open</a>
     </div>
-    <div class="card p-3 m-1" style="width:18rem;">
+    <div class="card p-3 m-1 col-sm" style="width:18rem;">
       <lord-icon src="https://cdn.lordicon.com/xsqjakgm.json"
               trigger="loop"
               delay="2000"
@@ -71,6 +66,30 @@
       <a class="btn btn-primary" href="{% url 'service' %}">Open</a>
     </div>
   </div>
+  </div>
 </div>
+{% endblock %}
+{% block extra_data %}
+<div class="col">
+  <div class="row">
+    <div class="row py-2 my-1"><h3 class="btn btn-outline-primary"><a href="{% url '' %}">Current Stock</a></h3></div>
+  <div class="row" id="vehicle_data">
+    <div class="spinner-border mx-1 text-primary" role="status"></div>
+    Loading...
+  </div>
+  </div>
 </div>
+{% endblock %}
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+    $ajax({
+      url:'{% url "get_dashboard" %}',
+      success: function(data){
+        $('#vehicle-data').text(data.vehicle_data);
+      },
+      
+    });
+  });
+</script>
 {% endblock %}
