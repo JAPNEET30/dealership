@@ -26,76 +26,93 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        {% block sidebar %}
-        <div class="col-sm-1 col" style="display:flex; flex-direction:column;">
-        <div style="display:flex; flex-direction: column; min-height: 87vh;" class="sidebar-nav border-end">
-          <div class="text-dark flex" style="flex-direction: column;">
+        <div class="col-1 object-fit ms-1">
+          <div class="text-dark flex col my-1 mb-3" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
               <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
               <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
             </svg>
             <span id="user_name" class="col-md-1">User</span>
           </div>
-          <div id="dashboard_button" style="display:flex;flex-direction: column;">
-            <a href="{% url 'index' %}" class="btn btn-outline-light" aria-describedby="Dashboardspan">
+          <div id="dashboard_button" class="justify-content-center text-center row w-100 flex">
+            <a href="{% url 'index' %}" class="btn btn-outline-light border border-primary" aria-describedby="Dashboardspan">
               <lord-icon src="https://cdn.lordicon.com/dqrpfjei.json"
                   delay="500"
                   state="hover-roll"
-                  style="width:50px;height:50px">
-              </lord-icon></a><span role="tooltip" id="Dashboardspan">Dashboard</span>
+                  style="width:50px;height:50px"
+                  class="w-100">
+              </lord-icon></a>
+              <span role="tooltip" id="Dashboardspan" class="row text-break small">Dashboard</span>
           </div>
-          
-           <div id="stock_button" style="display:flex;flex-direction: column;">
-             <a class="btn btn-outline-light" href="{% url 'stock'%}" aria-describedby="stockspan">
-              <lord-icon
-                  src="https://cdn.lordicon.com/ajfmgpbq.json"
+          {% if perms.usercore.is_admin or perms.usercore.is_subadmin %}
+           <div id="stock_button" class="justify-content-center text-center row w-100">
+             <a class="btn btn-outline-light border border-primary" href="{% url 'stock'%}" aria-describedby="stockspan">
+              <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
                   delay="500"
                   stroke="bold"
                   state="hover-growth"
-                  style="width:50px;height:50px">
-            </lord-icon></a><span role="tooltip" id="stockspan">Stock</span></div>
-            <div id="workshop_button" style="display:flex;flex-direction: column;">
-              <a class="btn btn-outline-light btn-links" href="{% url 'workshop'%}" aria-describedby="workshopspan">
+                  style="width:50px;height:50px"
+                  class="w-100">
+            </lord-icon></a>
+            <span role="tooltip" id="stockspan" class="row text-break small">Stock</span></div>
+            {% endif %}
+            <div id="workshop_button" class="justify-content-center text-center row w-100">
+              <a class="btn btn-outline-light btn-links border border-primary" href="{% url 'workshop'%}" aria-describedby="workshopspan">
               <lord-icon
                   src="https://cdn.lordicon.com/raldojya.json"
                   stroke="bold"
-                  style="width:50px;height:50px">
-            </lord-icon></a><span id="workshopspan" role="tooltip">Workshop</span></div>
-           <div id="insurance_button" style="display:flex;flex-direction: column;">
-            <a class="btn btn-outline-light" href="{% url 'insurance'%}" aria-describedby="insurancespan">
+                  style="width:50px;height:50px"
+                  class="w-100">
+            </lord-icon></a>
+            <span id="workshopspan" role="tooltip" class="row text-break small">Workshop</span></div>
+
+           <div id="insurance_button" class="justify-content-center text-center row w-100">
+            <a class="btn btn-outline-light border border-primary" href="{% url 'insurance'%}" aria-describedby="insurancespan">
               <lord-icon
               src="https://cdn.lordicon.com/fhszghjk.json"
-              style="width:50px;height:50px">
-          </lord-icon></a><span id="insurancespan" role="tooltip">Insurance</span></div>
-            <div id="service_button" style="display:flex;flex-direction: column;">
-              <a class="btn btn-outline-light btn-links" href="{% url 'service'%}" aria-describedby="servicespan"><lord-icon
+              style="width:50px;height:50px"
+              class="w-100">
+          </lord-icon></a>
+          <span id="insurancespan" role="tooltip" class="row text-break small">Insurance</span></div>
+
+            <div id="service_button" class="justify-content-center text-center row w-100 ">
+              <a class="btn btn-outline-light btn-links border border-primary" href="{% url 'service'%}" aria-describedby="servicespan"><lord-icon
               src="https://cdn.lordicon.com/xsqjakgm.json"
               delay="800"
               stroke="bold"
               state="hover-unfold"
-              style="width:50px;height:50px">
-          </lord-icon></a><span id="servicespan" role="tooltip">Service</span></div>
-          <div id="department_button" style="display:flex;flex-direction: column;">
-            <a class="btn btn-outline-light" href="{% url 'department'%}" aria-describedby="departmentspan"><lord-icon
+              style="width:50px;height:50px"
+              class="w-100">
+          </lord-icon></a>
+          <span id="servicespan" role="tooltip" class="row text-break">Service</span></div>
+
+          <div id="department_button" class="justify-content-center text-center row w-100">
+            <a class="btn btn-outline-light border border-primary" href="{% url 'department'%}" aria-describedby="departmentspan"><lord-icon
             src="https://cdn.lordicon.com/hojnqwxj.json"
             stroke="bold"
-            style="width:50px;height:50px">
-        </lord-icon></a><span id="departmentspan" role="tooltip">Department</span></div>
+            style="width:50px;height:50px"
+            class="w-100">
+        </lord-icon></a>
+        <span id="departmentspan" role="tooltip" class="row text-break small">Department</span></div>
+
+        <div class="justify-content-center text-center row w-100 my-5 py-5"></div>
+        <div class="justify-content-center text-center row w-100 justify-end">
+            <a class="btn btn-outline-danger " style="margin-top:auto;" href="{% url 'logout' %}" aria-describedby="signoutspan"><lord-icon
+              src="https://cdn.lordicon.com/xzalkbkz.json"
+              trigger="hover"
+              style="width:50px;height:50px"
+              class="w-100">
+            </lord-icon></a>
+            <span role="tooltip" id="signoutspan" class="row text-break small">Sign out</span>
+          </div>
+          
         </div>
-        <form style="position: fixed; margin-top: 87vh;">
-          <a class="btn btn-outline-danger" style="margin-top:auto;" href="{% url 'logout' %}"><lord-icon
-            src="https://cdn.lordicon.com/xzalkbkz.json"
-            trigger="hover"
-            style="width:50px;height:50px">
-          </lord-icon><br/>Sign out</a>
-        </form>
-      </div>
-        {% endblock %}
-        <div class="col-sm-9">
+        
+        <div class="col-9 object-fit">
           {% block content %}
           {% endblock %}
         </div>
-        <div class="col">{% block extra_data %}
+        <div class="col object-fit">{% block extra_data %}
           {% endblock %}</div>
       </div>
     </div>

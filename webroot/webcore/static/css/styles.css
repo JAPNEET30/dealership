@@ -3,7 +3,7 @@
   margin-top: 10px;
   flex-direction:column; 
   width:fit-content;
-  position:fixed;
+  position:absolute;
 } 
 
 footer{
@@ -54,3 +54,9 @@ footer{
 [aria-describedby]:focus + [role="tooltip"] {
   visibility: visible;
 }
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: white;
+  background-image:linear-gradient(90deg,rgb(189, 154, 255),rgb(85, 207, 255),rgb(189, 154, 255));
+  border-image:linear-gradient(90deg,rgb(189, 154, 255),rgb(85, 207, 255));
+  }

@@ -1,0 +1,245 @@
+{% extends '../base_generic.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+<div class="row m-2">
+    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="cat_loc_select">
+        <input type="radio" id="category-check" class="btn-check" autocomplete="off" checked name="add_radio" value="category">
+        <label for="category-check" class="btn btn-outline-primary">Add Categories</label>
+        <input type="radio" id="location-check" class="btn-check" autocomplete="off" name="add_radio" value="location">
+        <label for="location-check" class="btn btn-outline-primary">Add Locations</label>
+    </div>
+    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="category_upload_type">
+        <input type="radio" id="excel-categories-upload" class="btn-check" autocomplete="off" name="category_excel_upload" value="excel"/>
+        <label for="excel-categories-upload" class="btn btn-outline-primary">Upload Excel</label>
+        <input type="radio" id="manual-categories-upload" class="btn-check" autocomplete="off" name="category_excel_upload" value="manual" checked/>
+        <label for="manual-categories-upload" class="btn btn-outline-primary">Add Manually</label>
+    </div>
+    <form class="row m-2" id="cat_excel" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Upload Excel file to add categories data.</p>
+        {% for field in cat_excel_form %}
+          <div class="form-group">
+            {{ field.label_tag }}{{field.}}
+            <input
+              type="file"
+              name="{{ field.html_name }}"
+              class="form-control btn btn-outline-primary"
+              id="{{ field.id_for_label }}"
+              accept = ".xlsx,.xls"
+            />
+          </div>
+
+          {% if field.errors %} {% for error in field.errors %}
+          <p style="font-size: 13px;">
+            {{ error|escape }}
+          </p>
+          {% endfor %} {% endif %} {% endfor %}
+        <div class="btn-group mt-2">
+            <input type="submit" class="btn btn-primary bg-primary-subtle text-primary" value="Upload"/>
+            <input type="reset" class="btn btn-danger bg-danger-subtle text-danger" value="Clear"/>
+        </div>
+    </form>
+
+    <form class="row m-2" id="cat_manual" method="post">
+        {% csrf_token %}
+        <p>Manually Add Categories here.<br/>Seperate Color and Varients using ',' <em>(comma)</em>.</p>
+        {% for field in cat_manual_form %}
+        {% if 'Accessories Included' not in field.label_tag %}
+        <div class="form-group">
+            {{ field.label_tag }}{{field.}}
+            <input
+            type="text"
+              name="{{ field.html_name }}"
+              class="form-control border-primary {% if 'Accessories Included' in field.label_tag %} form-check-input {% endif %}"
+              maxlength="100"
+              id="{{ field.id_for_label }}"
+              {%if "Accessories listed" in field.label_tag %} disabled {% endif %}
+            />
+          </div>
+          {% else %}
+          <div class="form-group my-2">
+            <input type="checkbox" name="{{ field.html_name }}"
+              class="btn-check checked" id="{{ field.id_for_label }}" autocomplete="off" value="has_accessories"/>
+            <label for="{{field.id_for_label}}" class="btn btn-outline-primary">Accessories Included</label>
+          </div>
+          {% endif %}
+          {% if field.errors %} {% for error in field.errors %}
+          <p style="font-size: 13px;">
+            {{ error|escape }}
+          </p>
+          {% endfor %} {% endif %} {% endfor %}
+        <div class="btn-group mt-2">
+            <input type="submit" class="btn btn-outline-primary bg-primary-subtle text-primary" value="Submit"/>
+            <input type="reset" class="btn btn-outline-danger bg-danger-subtle text-danger" value="Clear" id="clear_cat_manual"/>
+        </div>
+    </form>
+
+    <form class="row m-2" id="loc_manual" method="post">
+        {% csrf_token %}
+        <p>Manually Add Locations here.</p>
+        {% for field in loc_manual_form %}
+        {% if 'type' not in field.label_tag %}
+          <div class="form-group">
+            {{ field.label_tag }}
+            <input
+              type="text"
+              name="{{ field.html_name }}"
+              class="form-control border-primary"
+              max_length = "{{ field.max_length }}"
+              id="{{ field.id_for_label }}"
+            />
+            </div>
+        {% else %}
+            <div class="form-group mt-2">
+            {{field.label_tag}}
+            {{ field }}
+            </div>          
+            {% endif %}
+
+          {% if field.errors %} {% for error in field.errors %}
+          <p style="font-size: 13px;">
+            {{ error|escape }}
+          </p>
+          {% endfor %} {% endif %} {% endfor %}
+        <div class="btn-group mt-2">
+            <input type="submit" class="btn btn-primary bg-primary-subtle" value="Submit"/>
+            <input type="reset" class="btn btn-danger bg-danger-subtle" value="Clear"/>
+        </div>
+    </form>
+    <div class="table m-2 border border-bg-primary-subtle rounded" id="table_div">
+        <h3>Uploaded Data</h3>
+        <table id="table_id" class="table table-striped-columns border-primary table ">
+            <tr>
+                <th scope="col">#</th>
+                <th>Model name</th>
+                <th>Colors</th>
+                <th>Varients</th>
+            </tr>
+            <tr>
+                <td scope="row"></td>
+                <td>c1r1</td>
+                <td>c2r2</td>
+                <td>c3r1</td>
+            </tr>
+            <tr>
+                <td scope="row"></td>
+                <td>c1r2</td>
+                <td>c2r2</td>
+                <td>c3r2</td>
+            </tr>
+        </table>
+    </div>
+    
+</div>
+{% endblock %}
+{% block extra_data %}
+<div class="btn-primary text-center mt-2">
+    <p>If you want to update the data. \/</p>
+    <a class="btn btn-primary" href="{% url 'update_data' %}">Update Here</a>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+    $('#category_upload_type').show();
+    $('#cat_excel').hide();
+    $('#cat_manual').show();
+    $('#loc_manual').hide();
+    $('#id_type').attr('class', 'btn btn-primary dropdown-toggle')
+    $('#id_accessories_listed').prop('disabled',true);
+    $(document).ready(function(){
+        $('div[id=cat_loc_select]').change(function(){
+            var cat_loc_select_var = $('input[type=radio][name=add_radio]:checked').val();
+            if (cat_loc_select_var == 'location'){
+                $('#category_upload_type').hide();
+                $('#cat_excel').hide();
+                $('#cat_manual').hide();
+                $('#loc_manual').show();
+            }else{
+                $('#category_upload_type').show();
+                $('#cat_excel').hide();
+                $('#cat_manual').show();
+                $('#loc_manual').hide();
+            }
+        }
+        );
+        $('div[id=category_upload_type]').change(function(){
+            var cat_loc_select_var = $('input[type=radio][name=category_excel_upload]:checked').val();
+            if (cat_loc_select_var == 'excel'){
+                $('#category_upload_type').show();
+                $('#cat_excel').show();
+                $('#cat_manual').hide();
+                $('#loc_manual').hide();
+            }else{
+                $('#category_upload_type').show();
+                $('#cat_excel').hide();
+                $('#cat_manual').show();
+                $('#loc_manual').hide();
+            }
+        }
+        );
+        $('#id_is_accessories_included').change(function(){
+            var acsry = $('#id_is_accessories_included:checked').val();
+            if (acsry == 'has_accessories'){
+                $('#id_accessories_listed').prop('disabled',false);
+            }
+            else{
+                $('#id_accessories_listed').prop('disabled',true);
+            }
+            
+        });
+        $('input[id=clear_cat_manual]').click(function(){
+            $('#id_accessories_listed').prop('disabled',true);
+        });
+        $('#cat_manual').submit(function(){
+            $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: "{% url 'get_cat_manual' %}",
+                success: function(){
+                    alert("Your data is stored.");
+                },
+                error:function(response){
+                    alert('An error has occured.');
+                }
+            });
+            return false;
+        });
+        $('#cat_excel').submit(function(event){
+            event.preventDefault();
+            var formdata = new FormData(this);
+            $.ajax({
+                data: formdata,
+                type: $(this).attr('method'),
+                url: "{% url 'get_cat_excel' %}",
+                processData:false,
+                contentType:false,
+                success: function(response){
+                    $("#table_div").show();
+                    alert("Your data is stored."+response.data);
+                },
+                error:function(response){
+                    alert('An error has occured.'+response.errors);
+                }
+            });
+            return false;
+        });
+        $('#loc_manual').submit(function(){
+            $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: "{% url 'get_loc_manual' %}",
+                success: function(){
+                    alert("Your data is stored.");
+                },
+                error:function(response){
+                    alert('An error has occured.');
+                }
+            });
+            return false;
+        });
+    });
+</script>
+{% endblock%}

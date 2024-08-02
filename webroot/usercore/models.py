@@ -51,11 +51,11 @@ class User(AbstractUser):
     # objects = models.Manager()
     objects_manager = CustomUserManager()
 
-    # class Meta:
-    #     permissions=[
-    #         (
-    #             "is_admin","checks if the user is admin or not."
-    #         ),(
+    class Meta:
+        permissions=[
+            (
+                "is_admin","checks if the user is admin or not."
+            ),]#(
     #             "is_subscribed","checks if the subscription is valid."
     #         ),(
     #             "is_sub-admin","checks if the user is sub-admin."

@@ -1,6 +1,8 @@
 {% extends '../base_generic.html' %}
 
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 <div class="row m-2">
     
     <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="inputid">
@@ -9,18 +11,31 @@
         <input type="radio" id="excel-upload-check" class="btn-check" autocomplete="off" name="inputradiotype" value="excel">
         <label for="excel-upload-check" class="btn btn-outline-primary">Excel Upload</label>
     </div>
-    
-    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="stockid">
-        <input type="radio" id="incoming-check" class="btn-check" autocomplete="off" name="stockradiotype" checked value="incoming">
-        <label for="incoming-check" class="btn btn-outline-primary">Incoming Stock</label>
-        <input type="radio" id="current-check" class="btn-check" autocomplete="off" name="stockradiotype" value="current">
-        <label for="current-check" class="btn btn-outline-primary">Add to Current Stock</label>
-        <input type="radio" id="outgoing-check" class="btn-check" autocomplete="off" name="stockradiotype" value="outgoing">
-        <label for="outgoing-check" class="btn btn-outline-primary">Outgoing Stock</label>
-    </div>
-    <div class="form" id="formid">
-        <p>Form</p>
-        {{ form }}
+    <!-- style="background-image:linear-gradient(90deg,rgb(189, 154, 255),rgb(85, 207, 255));" -->
+     <form id="stockid" class="row">
+        {% csrf_token %}
+        <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" id="incoming-check" class="btn-check" autocomplete="off" name="stockradiotype" checked value="incoming" >
+            <label for="incoming-check" class="btn btn-outline-primary btn-border">Incoming Stock</label>
+            <input type="radio" id="current-check" class="btn-check" autocomplete="off" name="stockradiotype" value="current">
+            <label for="current-check" class="btn btn-outline-primary btn-border">Add to Current Stock</label>
+            <input type="radio" id="outgoing-check" class="btn-check" autocomplete="off" name="stockradiotype" value="outgoing">
+            <label for="outgoing-check" class="btn btn-outline-primary btn-border">Outgoing Stock</label>
+        </div>
+        <div>
+            {{ manual_form }}
+        </div>
+        <div class="btn-group m-2">
+            <input type="button" class="col btn btn-primary" value="Submit"/>
+            <input type="button" class="col btn btn-danger" value="Clear"/>
+        </div>
+     </form>
+    <div class="m-2 border border-primary rounded p-2" id="formid">
+        <p class="">Add Your Excel file here \/.</p>
+        <form class="" method="post">
+            {% csrf_token %}
+            {{ excel_form }}
+        </form>
     </div>
     <p id="result"></p>
     
@@ -28,17 +43,22 @@
 </div>
 {% endblock %}
 {% block extra_scripts %}
+<!-- <style>
+######Test styles######
+</style> -->
 <script>
     $('#stockid').show();
+    $('#formid').hide();
     $(document).ready(function(){
         $('div[id=inputid]').change(function(){
         var entry_type = $('input[type=radio][name=inputradiotype]:checked').val();
         if (entry_type =='excel'){
             $('#stockid').hide();
-            
+            $('#formid').show();
         }
         else{
             $('#stockid').show();
+            $('#formid').hide();
         }
         });
     });

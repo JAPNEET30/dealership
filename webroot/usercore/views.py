@@ -5,9 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import registrationForm
 from .models import User, businessid, subscriptions, subscriptionsid
 from django.utils import timezone
-import pytz, datetime
+import datetime
 from django.utils.crypto import get_random_string
 from django.db import transaction
+from django.contrib.auth.models import Permission
+# from django.contrib.contenttypes.models import ContentType
  
 # Views
 @login_required
@@ -25,9 +27,8 @@ def register(request):
             # user = authenticate(username = username, password = password)
             # login(request, user)
             subID = subscriptionsid()
-            # subID.save()
             busiID = businessid()
-            # busiID.save()
+            permission = Permission.objects.get(codename='is_admin')
             subscription = subscriptions(subscriptionid = subID,
                                          businessid = busiID,
                                          start_date = timezone.now(),
@@ -39,8 +40,6 @@ def register(request):
                                          payment_status = 'success',
                                          is_valid = True)
             
-            # subscription.save()
-            # user.save()
             with transaction.atomic():
                 busiID.save()
                 subID.save()
@@ -58,6 +57,8 @@ def register(request):
                      subscription = subID,
                      phone_contact = form.cleaned_data.get('phone_contact')
                      )
+                # user.has_perm('is_admin')
+                user.user_permissions.add(permission)
                 user.save()
 
             return redirect('login')

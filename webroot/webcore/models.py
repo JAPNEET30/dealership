@@ -13,10 +13,8 @@ factory_status = models.CharField(choices={'unknown':'unknown','waiting for deli
 #classes
 class categories(models.Model):
     businessid = models.ForeignKey(to=businessid, default=0, on_delete=models.PROTECT)
-    model_name = models.CharField(max_length=40)
-    code_name = models.CharField(max_length=40)
-    colours = models.JSONField()
-    varients = models.JSONField()
+    model_name = models.CharField(max_length=50)
+    other = models.JSONField()
     is_accessories_included = models.BooleanField()
     accessories = models.JSONField(blank=True, null=True)
 

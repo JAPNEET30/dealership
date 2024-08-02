@@ -9,7 +9,7 @@ class CustomUserManager(BaseUserManager):
     for authentication instead of usernames.
     """
     def create_user(self, first_name, username, password, last_name, gstin_Number, businessid, email,
-                     is_active, admin_access, businessName, subscription, phone_contact):
+                     is_active, admin_access, businessName, subscription, phone_contact, **extra_fields):
         """
         Create and save a user with the given email and password.
         """
@@ -30,7 +30,8 @@ class CustomUserManager(BaseUserManager):
                      admin_access = admin_access,
                      businessName = businessName,
                      subscription = subscription,
-                     phone_contact = phone_contact)
+                     phone_contact = phone_contact,
+                     **extra_fields)
         user.set_password(password)
         user.save()
         return user
@@ -44,6 +45,17 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("is_active", True)
+        extra_fields.setdefault("first_name",'japneet')
+        # extra_fields.setdefault("username",
+        extra_fields.setdefault("last_name",'')
+        extra_fields.setdefault("gstin_Number",'')
+        extra_fields.setdefault("businessid",'10')
+        # extra_fields.setdefault("email",
+        # extra_fields.setdefault("is_active",
+        extra_fields.setdefault("admin_access", True)
+        extra_fields.setdefault("businessName", 'joratech')
+        extra_fields.setdefault("subscription", 8)
+        extra_fields.setdefault("phone_contact", 9479026539)
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError(_("Superuser must have is_staff=True."))

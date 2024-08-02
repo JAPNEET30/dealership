@@ -132,3 +132,4 @@ LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/dealership/'
 LOGOUT_REDIRECT_URL = '/user/logout/'
 AUTH_USER_MODEL = 'usercore.User'
+MEDIA_ROOT = Path(BASE_DIR, 'uploads/')
