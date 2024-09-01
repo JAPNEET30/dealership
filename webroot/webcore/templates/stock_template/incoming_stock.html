@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>Incoming Stock</title>
+{% endblock %}
+{% block content %}
+<div class="data-table">
+<table>
+    <thead><tr><th></th></tr></thead>
+    <tbody>
+{% for i in serial %}
+    <tr>
+        <th>{{ forloop.counter }}</th>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<table>
+    <thead><tr><th>Invoice No.</th><th>Invoice Date</th><th>Truck No.</th>
+        <th>Date of Dispatch</th><th>Date of Arrival</th><th>Source</th></tr></thead>
+    <tbody>
+{% for val in data_table %}
+    <tr>
+        
+       <td>{{val.Dispatch}}</td>
+        <td>{{val.Arrival}}</td>
+        <td>{{val.Source}}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
+{% block extra_data %}
+<a href="{% url 'incoming_add' %}" class="libtn">Add incoming Stock<span></span></a>
+<a href="{% url 'current' %}" class="libtn">Current Stock<span></span></a>
+<a href="#" class="libtn">Incoming Stock<span></span></a>
+<a href="{% url 'insurance'%}" class="libtn">Outgoing Stock<span></span></a>
+<a href="{% url 'department'%}" class="libtn">Damaged Stock<span></span></a>
+{% endblock %}
+{% block extra_scripts %}
+  <!-- <script src="{% static 'js/stocks.js' %}"></script>
+  <script>
+    $(document).ready(function(){
+        $.ajax({
+                  url: '{% url "get_sub" %}',
+                  success: function(data) {
+                      // $('#subDate').text(data.subscription);
+                  }
+        });
+      });
+  </script> -->
+{% endblock %}

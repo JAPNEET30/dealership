@@ -1,94 +1,26 @@
 {% extends "base_generic.html" %}
-
+{% load static %}
 {% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
 <title>Dashboard</title>
 {% endblock %}
 {% block content %}
-<div class="dom">
-  <p class="m-1">A management app for dealerships<em class="m-1">By Japneet Singh!</em></p>
-  <div class="row m-1">
-  <div style="display:flex;" class="col-sm-12 g-2 overflow-hidden">
-    <div class="card p-3 m-1 col-sm" style="width:18rem;">
-      <span class="card-img-top">
-        <lord-icon src="https://cdn.lordicon.com/ajfmgpbq.json"
-                  trigger="loop"
-                  delay="2000"
-                  stroke="bold"
-                  state="hover-growth"
-                  style="width:80px;height:80px; margin-top:2px;"
-                  class="w-100">
-      </lord-icon>
-    </span>
-      <span class="card-body card-title">Stocks</span>
-      <p class="card-body card-text">To manage your incoming and outgoing of supply.</p>
-      <a class="btn btn-primary" href="{% url 'stock' %}">Open</a>
-    </div>
-    <div class="card p-3 m-1 col-sm" style="width:18rem;">
-      <span class="card-img-top">
-      <lord-icon src="https://cdn.lordicon.com/raldojya.json"
-                  trigger="loop"
-                  stroke="bold"
-                  delay="2000"
-                  style="width:80px;height:80px"
-                  class="w-100">
-            </lord-icon></span>
-      <span class="card-body card-title">Workshop</span>
-      <p class="card-body card-text">To manage your inventory of parts.</p>
-      <a class="btn btn-primary" href="{% url 'workshop' %}">Open</a>
-    </div>
-    <div class="card p-3 m-1 col-sm" style="width:18rem;">
-      <span class="card-img-top">
-      <lord-icon src="https://cdn.lordicon.com/fhszghjk.json"
-              trigger="loop"
-              delay="2000"
-              style="width:80px;height:80px"
-              class="w-100">
-          </lord-icon></span>
-      <span class="card-body card-title">Insurance</span>
-      <p class="card-body card-text">Helps to track and manage your insurance issues.</p>
-      <a class="btn btn-primary" href="{% url 'insurance' %}">Open</a>
-    </div>
-    <div class="card p-3 m-1 col-sm" style="width:18rem;">
-      <span class="card-img-top">
-      <lord-icon src="https://cdn.lordicon.com/hojnqwxj.json"
-                  trigger="loop"
-                  stroke="bold"
-                  delay="2000"
-                  style="width:80px;height:80px"
-                  class="w-100">
-              </lord-icon></span>
-      <span class="card-body card-title">Department</span>
-      <p class="card-body card-text">Helps in managing different teams. Provides a view to manage every person's access.</p>
-      <a class="btn btn-primary" href="{% url 'department' %}">Open</a>
-    </div>
-    <div class="card p-3 m-1 col-sm" style="width:18rem;">
-      <span class="card-img-top">
-      <lord-icon src="https://cdn.lordicon.com/xsqjakgm.json"
-              trigger="loop"
-              delay="2000"
-              stroke="bold"
-              state="hover-unfold"
-              style="width:80px;height:80px"
-              class="w-100">
-          </lord-icon></span>
-      <span class="card-body card-title">Service</span>
-      <p class="card-body card-text">Provides a space to manage your service queries and track progress.</p>
-      <a class="btn btn-primary" href="{% url 'service' %}">Open</a>
-    </div>
-  </div>
-  </div>
-</div>
+<a href="{% url 'stock' %}" class="libtn"><p>Stocks<span></span></p>
+  <p>Manage inventory.</p></a>
+<a href="{% url 'workshop'%}" class="libtn"><p>Workshop<span></span></p>
+  <p>Manage pending tasks in workshop.</p></a>
+<a href="{% url 'insurance'%}" class="libtn"><p>Insurance<span></span></p>
+  <p>View and update insurance inquiries.</p></a>
+<a href="{% url 'department'%}" class="libtn"><p>Teams<span></span></p>
+  <p>Manage teams and members.</p></a>
+<a href="#" class="libtn"><p>Profile<span></span></p>
+  <p>Manage profile data.</p></a>
+<a href="{% url 'service'%}" class="libtn"><p>Services<span></span></p>
+  <p>Ask developer for addition services.</p></a>
 {% endblock %}
 {% block extra_data %}
-<div class="col">
-  <div class="row">
-    <div class="row py-2 my-1"><h3 class="btn btn-outline-primary"><a>Current Stock</a></h3></div>
-  <div class="row" id="vehicle_data">
-    <div class="spinner-border mx-1 text-primary" role="status"></div>
-    Loading...
-  </div>
-  </div>
-</div>
+<div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
+<div id="sidebar-content"></div>
 {% endblock %}
 {% block scripts %}
 <script>

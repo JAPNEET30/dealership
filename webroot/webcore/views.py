@@ -41,10 +41,6 @@ def insurance(request):
 def department(request):
     return render(request, 'department.html')
 
-@login_required
-def stockadd(request):
-    return render(request, 'stock_add.html')
-
 @never_cache
 @login_required
 def logout_view(request):
@@ -52,5 +48,5 @@ def logout_view(request):
 
 @never_cache
 @login_required
-def subscribe(request):
+def subscription(request):
     return render(request, 'subscription.html')

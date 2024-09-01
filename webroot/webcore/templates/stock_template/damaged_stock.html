@@ -1,0 +1,50 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>Categories</title>
+{% endblock %}
+{% block content %}
+<!-- <div class="forms"><input class="libtn" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name"></div> -->
+<div class="data-table">
+    <h2>Title</h2>
+    <div class="table-div">
+        <span>
+            
+        </span>
+        <span>
+            <table id="myTable">
+                <thead><tr><th>Model</th><th>Varient</th><th>Location</th><th>Quantity</th></tr></thead>
+                <tbody>
+            {% for val in data_table %}
+                <tr>
+                   <td>{{val.Model}}</td>
+                   <td>{{val.Varient}}</td>
+                   <td>{{val.Location}}</td>
+                   <td>{{val.Quantity}}</td>
+                </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+            </div>
+            
+        </span>
+    </div>
+
+{% endblock %}
+{% block extra_data %}
+<a href="#" class="libtn">Current Stock<span></span></a>
+<a href="{% url 'workshop'%}" class="libtn">Incoming Stock<span></span></a>
+<a href="{% url 'insurance'%}" class="libtn">Outgoing Stock<span></span></a>
+<a href="{% url 'department'%}" class="libtn">Damaged Stock<span></span></a>
+{% endblock %}
+{% block extra_scripts %}
+    
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#myTable').DataTable();
+        });
+    </script>
+    
+{% endblock %}

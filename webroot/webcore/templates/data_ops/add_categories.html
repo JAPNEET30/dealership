@@ -4,29 +4,29 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
-<div class="row m-2">
-    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="cat_loc_select">
-        <input type="radio" id="category-check" class="btn-check" autocomplete="off" checked name="add_radio" value="category">
-        <label for="category-check" class="btn btn-outline-primary">Add Categories</label>
-        <input type="radio" id="location-check" class="btn-check" autocomplete="off" name="add_radio" value="location">
-        <label for="location-check" class="btn btn-outline-primary">Add Locations</label>
+<div class="forms">
+    <div class="libtn-grp" role="group" aria-label="Basic radio toggle button group" id="cat_loc_select">
+        <input type="radio" id="category-check" autocomplete="off" checked name="add_radio" value="category">
+        <label for="category-check" class="libtn">Add Categories<span></span></label>
+        <input type="radio" id="location-check" autocomplete="off" name="add_radio" value="location">
+        <label for="location-check" class="libtn">Add Locations<span></span></label>
     </div>
-    <div class="btn-group m-2" role="group" aria-label="Basic radio toggle button group" id="category_upload_type">
-        <input type="radio" id="excel-categories-upload" class="btn-check" autocomplete="off" name="category_excel_upload" value="excel"/>
-        <label for="excel-categories-upload" class="btn btn-outline-primary">Upload Excel</label>
-        <input type="radio" id="manual-categories-upload" class="btn-check" autocomplete="off" name="category_excel_upload" value="manual" checked/>
-        <label for="manual-categories-upload" class="btn btn-outline-primary">Add Manually</label>
+    <div class="libtn-grp" role="group" aria-label="Basic radio toggle button group" id="category_upload_type">
+        <input type="radio" id="excel-categories-upload" autocomplete="off" name="category_excel_upload" value="excel"/>
+        <label for="excel-categories-upload" class="libtn">Upload Excel<span></span></label>
+        <input type="radio" id="manual-categories-upload" autocomplete="off" name="category_excel_upload" value="manual" checked/>
+        <label for="manual-categories-upload" class="libtn">Add Manually<span></span></label>
     </div>
-    <form class="row m-2" id="cat_excel" method="post" enctype="multipart/form-data">
+    <form class="row" id="cat_excel" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p>Upload Excel file to add categories data.</p>
         {% for field in cat_excel_form %}
-          <div class="form-group">
-            {{ field.label_tag }}{{field.}}
+          <div class="">
+            {{ field.label_tag }}
             <input
               type="file"
               name="{{ field.html_name }}"
-              class="form-control btn btn-outline-primary"
+              class="libtn"
               id="{{ field.id_for_label }}"
               accept = ".xlsx,.xls"
             />
@@ -37,33 +37,33 @@
             {{ error|escape }}
           </p>
           {% endfor %} {% endif %} {% endfor %}
-        <div class="btn-group mt-2">
-            <input type="submit" class="btn btn-primary bg-primary-subtle text-primary" value="Upload"/>
-            <input type="reset" class="btn btn-danger bg-danger-subtle text-danger" value="Clear"/>
+        <div class="libtn-grp">
+            <input type="submit" class="libtn" value="Upload"/>
+            <input type="reset" class="libtn" value="Clear"/>
         </div>
     </form>
 
-    <form class="row m-2" id="cat_manual" method="post">
+    <form class="forms" id="cat_manual" method="post">
         {% csrf_token %}
         <p>Manually Add Categories here.<br/>Seperate Color and Varients using ',' <em>(comma)</em>.</p>
         {% for field in cat_manual_form %}
         {% if 'Accessories Included' not in field.label_tag %}
-        <div class="form-group">
-            {{ field.label_tag }}{{field.}}
+        <div class="">
+            {{ field.label_tag }}
             <input
             type="text"
               name="{{ field.html_name }}"
-              class="form-control border-primary {% if 'Accessories Included' in field.label_tag %} form-check-input {% endif %}"
+              class="libtn"
               maxlength="100"
               id="{{ field.id_for_label }}"
               {%if "Accessories listed" in field.label_tag %} disabled {% endif %}
             />
           </div>
           {% else %}
-          <div class="form-group my-2">
+          <div class="libtn-grp">
             <input type="checkbox" name="{{ field.html_name }}"
-              class="btn-check checked" id="{{ field.id_for_label }}" autocomplete="off" value="has_accessories"/>
-            <label for="{{field.id_for_label}}" class="btn btn-outline-primary">Accessories Included</label>
+              class="" id="{{ field.id_for_label }}" autocomplete="off" value="has_accessories"/>
+            <label for="{{field.id_for_label}}" class="libtn">Accessories Included<span></span></label>
           </div>
           {% endif %}
           {% if field.errors %} {% for error in field.errors %}
@@ -71,9 +71,9 @@
             {{ error|escape }}
           </p>
           {% endfor %} {% endif %} {% endfor %}
-        <div class="btn-group mt-2">
-            <input type="submit" class="btn btn-outline-primary bg-primary-subtle text-primary" value="Submit"/>
-            <input type="reset" class="btn btn-outline-danger bg-danger-subtle text-danger" value="Clear" id="clear_cat_manual"/>
+        <div class="libtn-grp">
+            <input type="submit" class="libtn" value="Add"/>
+            <input type="reset" class="libtn" value="Clear" id="clear_cat_manual"/>
         </div>
     </form>
 
@@ -82,18 +82,18 @@
         <p>Manually Add Locations here.</p>
         {% for field in loc_manual_form %}
         {% if 'type' not in field.label_tag %}
-          <div class="form-group">
+          <div class="">
             {{ field.label_tag }}
             <input
               type="text"
               name="{{ field.html_name }}"
-              class="form-control border-primary"
+              class="libtn"
               max_length = "{{ field.max_length }}"
               id="{{ field.id_for_label }}"
             />
             </div>
         {% else %}
-            <div class="form-group mt-2">
+            <div class="libtn mt-2">
             {{field.label_tag}}
             {{ field }}
             </div>          
@@ -104,33 +104,41 @@
             {{ error|escape }}
           </p>
           {% endfor %} {% endif %} {% endfor %}
-        <div class="btn-group mt-2">
-            <input type="submit" class="btn btn-primary bg-primary-subtle" value="Submit"/>
-            <input type="reset" class="btn btn-danger bg-danger-subtle" value="Clear"/>
+        <div class="libtn-grp mt-2">
+            <input type="submit" class="libtn" value="Submit"/>
+            <input type="reset" class="libtn" value="Clear"/>
         </div>
     </form>
-    <div class="table m-2 border border-bg-primary-subtle rounded" id="table_div">
+    <div class="data-table" id="table_div">
         <h3>Uploaded Data</h3>
-        <table id="table_id" class="table table-striped-columns border-primary table ">
-            <tr>
-                <th scope="col">#</th>
-                <th>Model name</th>
-                <th>Colors</th>
-                <th>Varients</th>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td>c1r1</td>
-                <td>c2r2</td>
-                <td>c3r1</td>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td>c1r2</td>
-                <td>c2r2</td>
-                <td>c3r2</td>
-            </tr>
-        </table>
+        <div class="table-div">
+            <span>
+                <table>
+                    <tr><th>*</th></tr>
+                    <tr><th>1</th></tr>
+                    <tr><th>2</th></tr>
+                </table>
+            </span>
+            <span>
+                <table id="table_id">
+                    <tr>
+                        <th>Model name</th>
+                        <th>Colors</th>
+                        <th>Varients</th>
+                    </tr>
+                    <tr>
+                        <td>c1r1</td>
+                        <td>c2r2</td>
+                        <td>c3r1</td>
+                    </tr>
+                    <tr>
+                        <td>c1r2</td>
+                        <td>c2r2</td>
+                        <td>c3r2</td>
+                    </tr>
+                </table>
+            </span>
+        </div>
     </div>
     
 </div>
@@ -138,11 +146,15 @@
 {% block extra_data %}
 <div class="btn-primary text-center mt-2">
     <p>If you want to update the data. \/</p>
-    <a class="btn btn-primary" href="{% url 'update_data' %}">Update Here</a>
+    <a class="libtn" href="{% url 'update_data' %}">Update Here<span></span></a>
+</div>
+<div id="data-sidebar" class="border border-primary rounded mt-2 col">
+    
 </div>
 {% endblock %}
 {% block extra_scripts %}
 <script>
+    $('#table_div').hide();
     $('#category_upload_type').show();
     $('#cat_excel').hide();
     $('#cat_manual').show();
@@ -150,6 +162,7 @@
     $('#id_type').attr('class', 'btn btn-primary dropdown-toggle')
     $('#id_accessories_listed').prop('disabled',true);
     $(document).ready(function(){
+        for_cat();
         $('div[id=cat_loc_select]').change(function(){
             var cat_loc_select_var = $('input[type=radio][name=add_radio]:checked').val();
             if (cat_loc_select_var == 'location'){
@@ -157,11 +170,13 @@
                 $('#cat_excel').hide();
                 $('#cat_manual').hide();
                 $('#loc_manual').show();
+                $('#table_div').hide();
             }else{
                 $('#category_upload_type').show();
-                $('#cat_excel').hide();
-                $('#cat_manual').show();
+                // $('#cat_manual').show();
                 $('#loc_manual').hide();
+                $('#table_div').hide();
+                
             }
         }
         );
@@ -172,11 +187,13 @@
                 $('#cat_excel').show();
                 $('#cat_manual').hide();
                 $('#loc_manual').hide();
+                $('#table_div').hide();
             }else{
                 $('#category_upload_type').show();
                 $('#cat_excel').hide();
                 $('#cat_manual').show();
                 $('#loc_manual').hide();
+                $('#table_div').hide();
             }
         }
         );
@@ -198,11 +215,12 @@
                 data: $(this).serialize(),
                 type: $(this).attr('method'),
                 url: "{% url 'get_cat_manual' %}",
-                success: function(){
+                success: function(response){
+                    for_cat();
                     alert("Your data is stored.");
                 },
                 error:function(response){
-                    alert('An error has occured.');
+                    alert('An error has occured.'+response.errors);
                 }
             });
             return false;
@@ -235,11 +253,58 @@
                     alert("Your data is stored.");
                 },
                 error:function(response){
-                    alert('An error has occured.');
+                    var res = response.errors
+                    console.log(response);
                 }
             });
             return false;
         });
+        function for_loc(){
+            $.ajax({
+            url: "{% url 'put_loc_table' %}",
+            success: function(response){
+                var result='';
+                for (value in response.model_names){
+                    result=result+'<div class="btn-group dropstart" role="group">'
+                        +'<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">'
+                        +response.model_names[value]
+                        +'</button><ul class=dropdown-menu>'
+                        +'<li><p class="dropdown-item">Varients:<b>'+response.varients[value]+'</b></p></li>'
+                        +'<li><p class="dropdown-item">Colors:<b>'+response.colors[value]+'</b></p></li>'
+                        +'<li><p class="dropdown-item">Accessories:<b>'+response.accessories[value]+'</b></p><li><ul></div>';
+                    
+                }
+                $('#data-sidebar').html('<h3 class="p-1">Categories</h3>'+result);
+            },
+            error:function(response){
+                $('#data-sidebar').append('<p> loc Error occured.</p>', response.errors);
+            }
+        });
+        }
+        
+        function for_cat(){
+            $.ajax({
+            url: "{% url 'put_cat_table' %}",
+                
+            success: function(response){
+                var result='';
+                for (value in response.model_names){
+                    result=result+'<div class="btn-group dropstart" role="group">'
+                        +'<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">'
+                        +response.model_names[value]
+                        +'</button><ul class=dropdown-menu>'
+                        +'<li><p class="dropdown-item">Varients:<b>'+response.varients[value]+'</b></p></li>'
+                        +'<li><p class="dropdown-item">Colors:<b>'+response.colors[value]+'</b></p></li>'
+                        +'<li><p class="dropdown-item">Accessories:<b>'+response.accessories[value]+'</b></p><li><ul></div>';
+                    
+                }
+                $('#data-sidebar').html('<h3 class="p-1">Categories</h3>'+result);
+            },
+            error:function(response){
+                $('#data-sidebar').append('<p>cat Error occured.</p>', response.errors);
+            }
+        });
+    }
     });
 </script>
 {% endblock%}

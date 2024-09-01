@@ -78,4 +78,3 @@ class vehicle_log(models.Model):
     engine_no = models.CharField(max_length=50)
     operation = models.CharField(max_length=200)
     category = models.CharField(max_length=50)
-    

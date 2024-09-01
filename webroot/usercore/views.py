@@ -21,20 +21,15 @@ def register(request):
         # form = UserCreationForm(request.POST)
         form = registrationForm(request.POST)
         if form.is_valid():
-            # form.save()
-            # username = form.cleaned_data.get('username')
-            # password = form.cleaned_data.get('password1')
-            # user = authenticate(username = username, password = password)
-            # login(request, user)
             subID = subscriptionsid()
             busiID = businessid()
             permission = Permission.objects.get(codename='is_admin')
             subscription = subscriptions(subscriptionid = subID,
                                          businessid = busiID,
                                          start_date = timezone.now(),
-                                         end_date = datetime.timedelta(days = 31)+timezone.now(),
+                                         end_date = datetime.timedelta(days = 10)+timezone.now(),
                                          amount = 0,
-                                         duration = datetime.timedelta(days=31),
+                                         duration = datetime.timedelta(days=10),
                                          transaction_id = str(get_random_string(14).upper()),
                                          Discount = 0,
                                          payment_status = 'success',
@@ -67,6 +62,7 @@ def register(request):
     else:
         form = registrationForm()
         return render(request, 'registration.html', {'form': form})
+
 
 @login_required
 def logout_view(request):

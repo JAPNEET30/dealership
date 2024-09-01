@@ -12,4 +12,6 @@ urlpatterns = [
     path('category_data/manual/', ajax_views.get_cat_manual, name='get_cat_manual'),
     path('category_data/auto/', ajax_views.get_cat_excel, name='get_cat_excel'),
     path('location_data/manual/', ajax_views.get_loc_manual, name='get_loc_manual'),
+    path('location_data/view/', ajax_views.put_loc_table, name='put_loc_table'),
+    path('categories_data/view/', ajax_views.put_cat_table, name='put_cat_table'),
 ]

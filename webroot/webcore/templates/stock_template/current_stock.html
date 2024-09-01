@@ -1,0 +1,81 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>{{table_title}}</title>
+{% endblock %}
+{% block content %}
+<!-- <div class="forms"><input class="libtn" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name"></div> -->
+<div class="data-table">
+    <h2>{{table_title}}</h2>
+        <span>
+            <table id="myTable">
+                <thead><tr>
+                {% for val in table_headers%}
+                <th>{{val}}</th>
+                {%endfor%}
+                </tr></thead>
+                <tbody>
+            {% for val in data_table %}
+                <tr>
+                  {% for key, value in val.items%}
+                  <td>{{value}}</td>
+                  {% endfor %}
+                   <!-- <td>{{val.Model}}</td>
+                   <td>{{val.Varient}}</td>
+                   <td>{{val.Location}}</td>
+                   <td>{{val.Quantity}}</td> -->
+                </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        </span>
+</div>
+
+{% endblock %}
+{% block extra_data %}
+<a href="{% url 'workshop'%}" class="libtn">Incoming Stock<span></span></a>
+<a href="{% url 'insurance'%}" class="libtn">Outgoing Stock<span></span></a>
+<a href="{% url 'department'%}" class="libtn">Damaged Stock<span></span></a>
+{% endblock %}
+{% block extra_scripts %}
+  <!-- <script src="{% static 'js/stocks.js' %}"></script>
+  <script>
+    $(document).ready(function(){
+        $.ajax({
+                  url: '{% url "get_sub" %}',
+                  success: function(data) {
+                      // $('#subDate').text(data.subscription);
+                  }
+        });
+      });
+  </script> -->
+  <!-- <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+    </script> -->
+    
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#myTable').DataTable();
+        });
+    </script>
+    
+{% endblock %}
