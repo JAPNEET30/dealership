@@ -7,7 +7,7 @@
 html, body{
     width:100dvw;
     height:100dvh;
-    background-image:url('../images/bodybg-compressed.jpg');
+    /* background-image:url('../images/bodybg-compressed.jpg'); */
     background-repeat: repeat;
     background-size:cover;
     background-blend-mode: difference;
@@ -16,6 +16,7 @@ html, body{
     font-size:1.3rem;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    color: var(--white);
 }
 
 nav{

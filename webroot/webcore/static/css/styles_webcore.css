@@ -269,7 +269,7 @@ nav{
       color: var(--color-3-5);
   }
 }
-.menulbl:hover{
+.menulbl:hover{ 
   background-color: var(--color-3-2);
   color:var(--color-3-5);
   transform:none;
@@ -458,4 +458,22 @@ nav{
   html,body{
       font-size:1em;
   }
+}
+
+/* New styles */
+.navlinks{
+    justify-content: center;
+    svg{
+        fill: var(--white);
+    }
+}
+
+.navlinks:hover{
+    p{
+        display:flex;
+    }
+    transition: ease-in-out 0.5s ;
+    svg{
+     fill: var(--black);
+    }
 }

@@ -61,6 +61,7 @@ html, body{
   /* scrollbar-width: none; */
   background-color: var(--color-3-4);
   overflow-x: hidden;
+  color:var(--white);
 }
 
 nav{
@@ -143,6 +144,18 @@ nav{
 
 }
 
+@keyframes menu-open {
+    0%{
+        transform: translateX(-100%);
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+        transform: translateY(0%);
+    }
+    
+}
+
 .libtn{
   text-decoration: none;
   transform-origin: center;
@@ -160,7 +173,7 @@ nav{
   span{
       width:100%;
       background-color: var(--color-3-3);
-      height:3px;
+      height:0.13rem;
   }
   a{
       text-decoration: none;
@@ -362,11 +375,13 @@ nav{
   min-height:50dvh;
   text-wrap: nowrap;
   position: static;
-  .table-div{
-      display: flex;
-      flex-direction: row;
+    table{
+        width:100%;
+    }
+  
       span{
           scrollbar-width: thin;
+          width:100%;
           scrollbar-color:var(--color-3-6);
           overflow-x: scroll;
           border:1px dashed var(--color-3-2);
@@ -375,11 +390,12 @@ nav{
           }
       }
       span:nth-child(1){
-          overflow-block: clip;
+          /* overflow-block: clip; */
           scrollbar-width: none;
       }
-  }
+
   th, tr, td{
+      flex-grow:1;
       text-align: center;
       text-shadow: none;
       padding:3px;
@@ -415,8 +431,6 @@ nav{
 #sidebar{
   max-width:20%;
 }
-
-
 
 @media screen and (max-width:1000px){
   html,body{
@@ -457,4 +471,20 @@ nav{
   html,body{
       font-size:1em;
   }
+}
+
+/* New styles */
+.navlinks{
+    justify-content: center;
+    p{
+        display:none;
+    }
+
+}
+
+.navlinks{
+    p{
+        display:flex;
+    }
+
 }

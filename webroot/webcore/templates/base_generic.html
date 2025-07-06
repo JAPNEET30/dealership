@@ -13,18 +13,32 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         {% load static %}
+<<<<<<< Updated upstream
         <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
         <link rel="icon" href="{% static 'images/JT2.ico' %}" type="image/x-icon">
     </head>
+=======
+        <link href="{% static 'css/styles_webcore.css' %}" rel="stylesheet"/>
+    </head> 
+>>>>>>> Stashed changes
     
     <body>
+        <script>0</script>
         <div>
             <nav class="navi">
                 <div><a href="{% url 'index' %}"><text id="logo">JoraTech<span></span></text></a></div>
                 <div id="links">
                     <ul id="link-list">
                         <li><a href="{% url 'index' %}" class="libtn">Dashboard<span></span></a></li>
+                        <li><a href="{% url 'index' %}" class="libtn navlinks">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M240-200h147.69v-235.38h184.62V-200H720v-360L480-741.54 240-560v360Zm-40 40v-420l280-211.54L760-580v420H532.31v-235.38H427.69V-160H200Zm280-310.77Z"/></svg>
+                                <!-- Dashboard -->
+                            </div>
+                            
+                            <span></span></a></li>
                         <li><a href="{% url 'stock' %}" class="libtn">Stocks<span></span></a></li>
                         <li><a href="{% url 'workshop' %}" class="libtn">Workshop<span></span></a></li>
                         <li><a href="{% url 'insurance' %}" class="libtn">Insurance<span></span></a></li>
@@ -32,15 +46,24 @@
                         <li><a href="{% url 'service' %}" class="libtn">Services<span></span></a></li>
                         <li class="libtn menulbl">Profile<span></span>
                         <ul class="menulist">
+                        <li class="libtn menulbl navlinks">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-504.62q-49.5 0-84.75-35.25T360-624.62q0-49.5 35.25-84.75T480-744.62q49.5 0 84.75 35.25T600-624.62q0 49.5-35.25 84.75T480-504.62ZM200-215.38v-65.85q0-24.77 14.42-46.35 14.43-21.57 38.81-33.5 56.62-27.15 113.31-40.73 56.69-13.57 113.46-13.57 56.77 0 113.46 13.57 56.69 13.58 113.31 40.73 24.38 11.93 38.81 33.5Q760-306 760-281.23v65.85H200Zm40-40h480v-25.85q0-13.31-8.58-25-8.57-11.69-23.73-19.77-49.38-23.92-101.83-36.65-52.45-12.73-105.86-12.73t-105.86 12.73Q321.69-349.92 272.31-326q-15.16 8.08-23.73 19.77-8.58 11.69-8.58 25v25.85Zm240-289.24q33 0 56.5-23.5t23.5-56.5q0-33-23.5-56.5t-56.5-23.5q-33 0-56.5 23.5t-23.5 56.5q0 33 23.5 56.5t56.5 23.5Zm0-80Zm0 369.24Z"/></svg>
+                            <!-- Profile -->
+                            <span></span>
+                        <ul class="menulist" style="font-size: 1rem;">
                             <li><a href="#" class="libtn">Profile<span></span></a></li>
                             <li><a href="#" class="libtn" style="text-wrap:pretty;">Subscriptions<span></span></a></li>
                             <li><a href="#" class="libtn">Logout<span></span></a></li>
+                            <li><a href="{% url 'logout'%}" class="libtn">Logout<span></span></a></li>
                         </ul></li>
                     </ul>
                 </div>
                 <div class="menulist">
                     <!-- <input type="checkbox" id="menu"/> -->
                     <label class="libtn menulbl">Options<span></span>
+                    <label class="libtn menulbl navlinks">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-269.23v-40h640v40H160ZM160-460v-40h640v40H160Zm0-190.77v-40h640v40H160Z"/></svg>
+                        <span></span>
                         <ul class="menulist">
                             <li class="libtn">
                                 <a href="{% url 'index' %}">Dashboard</a><span></span></li>
@@ -54,6 +77,8 @@
                                 <a href="department">Teams</a><span></span></li>
                             <li class="libtn">
                                 Profile<span></span></li>
+                                <a href="{% url 'department'%}">Teams</a><span></span></li>
+                            <li class="libtn">Profile<span></span></li>
                             <li class="libtn">
                                 <a href="{% url 'service'%}">Service</a><span></span></li>
                             <li class="libtn">

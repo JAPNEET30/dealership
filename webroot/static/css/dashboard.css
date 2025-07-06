@@ -34,7 +34,7 @@
     overflow-x:hidden;
     min-height: 0rem;
     div{
-        position:fixed;
+        /* position:sticky; */
         overflow-x:hidden;
         height:fit-content;
     }
