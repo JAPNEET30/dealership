@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('home/', views.home, name='home'),
     path('register/', views.register, name='register'),
+    path('subscribe/', views.subscribe, name='subscription'),
     path('', RedirectView.as_view(pattern_name='login', permanent=False))
     # path('admin/', admin.site.urls),
 ]

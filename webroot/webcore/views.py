@@ -24,6 +24,12 @@ def stock(request):
 
 @login_required
 @never_cache
+def track(request):
+    
+    return render(request, 'track.html')
+
+@login_required
+@never_cache
 def workshop(request):
     return render(request, 'workshop.html')
 

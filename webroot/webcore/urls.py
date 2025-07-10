@@ -7,6 +7,7 @@ from .templates.stock_template import urls as stock_urls
 urlpatterns =[
     path('', views.index, name='index'),
     path('stock/', views.stock, name='stock'),
+    path('track/', views.track, name='track'),
     path('workshop/', views.workshop, name='workshop'),
     path('service/', views.service, name='service'),
     path('insurance/', views.insurance, name='insurance'),

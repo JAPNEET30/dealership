@@ -50,6 +50,9 @@
   --color-3-4:#14213d;
   --color-3-5:#000000;
   --color-3-6:#6f8ac58b;
+  a{
+    text-decoration: none;
+  }
 }
 
 html, body{
@@ -73,7 +76,7 @@ nav{
   position:fixed;
   width:100%;
   padding-inline: 5%;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(2px);
   background-color: transparent;
   ul{
       display: flex;

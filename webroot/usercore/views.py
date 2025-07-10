@@ -68,3 +68,7 @@ def register(request):
 def logout_view(request):
     logout(request)
     return render(request, "registration/logout.html", {})
+
+@login_required
+def subscribe(request):
+    return render(request, 'registration/subscribe.html', {})
