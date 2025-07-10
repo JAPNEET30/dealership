@@ -351,6 +351,7 @@ nav{
   display:flex;
   flex-direction:row;
   padding:5px;
+  /* height: 100vh; */
   .division{
       display: flex;
       width:2px;

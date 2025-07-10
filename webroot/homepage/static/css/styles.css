@@ -330,6 +330,7 @@ nav{
   display:flex;
   flex-direction:row;
   padding:5px;
+  min-height:80%;
   .division{
       display: flex;
       width:1.5px;
