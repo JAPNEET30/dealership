@@ -72,3 +72,6 @@ def logout_view(request):
 @login_required
 def subscribe(request):
     return render(request, 'registration/subscribe.html', {})
+
+def password_reset(request):
+    return render(request, 'password_reset.html', {})

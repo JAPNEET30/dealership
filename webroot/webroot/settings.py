@@ -133,3 +133,12 @@ LOGIN_REDIRECT_URL = '/dealership/'
 LOGOUT_REDIRECT_URL = '/user/logout/'
 AUTH_USER_MODEL = 'usercore.User'
 MEDIA_ROOT = Path(BASE_DIR, 'uploads/')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'joratech@yahoo.com'
+EMAIL_HOST_PASSWORD = 'Mtech@3007#'
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False

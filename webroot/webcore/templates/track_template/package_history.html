@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/> {% endcomment %}
+<title>JoraTech|New Package</title>
+{% endblock %}
+{% block content %}
+
+<p> Write only for vehicle transport services.</p>
+<form>
+    <label>Note to create order: </label>
+    <input type="text" /><br/>
+    <label>Manual Entry: </label>
+    <input type="checkbox"/>
+    <p> </p>
+</form>
+{% endblock %}
+{% block extra_data %}
+<div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
+<div id="sidebar-content"></div>
+{% endblock %}
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+    $ajax({
+      url:'{% url "get_dashboard" %}',
+      success: function(data){
+        $('#vehicle-data').text(data.vehicle_data);
+      },
+      
+    });
+  });
+</script>
+{% endblock %}

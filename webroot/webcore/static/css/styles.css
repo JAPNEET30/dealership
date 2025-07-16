@@ -185,6 +185,12 @@ nav{
   
 }
 
+.libtn-label{
+    border:solid 5px rgba(255, 255, 255, 0);
+    margin-right: 0.5rem;
+}
+
+
 .libtn-grp{
   display:flex;
   flex-direction:row;
@@ -279,6 +285,7 @@ nav{
 }
 
 .forms{
+    width:100%;
   .libtn{
       margin-top:5px;
       margin-bottom:2px;
@@ -290,6 +297,7 @@ nav{
   }
   div{
       display:flex;
+      flex-wrap: wrap;
   }
   input[type='checkbox'], input[type='radio']{
       display:none;
