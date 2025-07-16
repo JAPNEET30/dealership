@@ -3,11 +3,12 @@ from django.urls import path, include
 from . import ajax_urls
 from . import views
 from .templates.stock_template import urls as stock_urls
+from .templates.track_template import urls as track_urls
 
 urlpatterns =[
     path('', views.index, name='index'),
     path('stock/', views.stock, name='stock'),
-    path('track/', views.track, name='track'),
+    # path('track/', views.track, name='track'),
     path('workshop/', views.workshop, name='workshop'),
     path('service/', views.service, name='service'),
     path('insurance/', views.insurance, name='insurance'),
@@ -18,4 +19,5 @@ urlpatterns =[
 urlpatterns+=[
     path('data/', include(ajax_urls)),
     path('stock_view/', include(stock_urls)),
+    path('track/', include(track_urls)),
 ]

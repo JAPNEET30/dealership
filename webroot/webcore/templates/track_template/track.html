@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>JoraTech|Track Logistics </title>
+{% endblock %}
+{% block content %}
+<a href="{% url 'package_history'%}" class="libtn"><p>History<span></span></p>
+  <p>View past packages</p></a>
+
+<a href="{% url 'new_package' %}" class="libtn"><p>New Package<span></span></p>
+  <p>Place order of new packages</p></a>
+
+{% endblock %}
+{% block extra_data %}
+<div><a class="libtn" id="sidebar-icon">Active Status<span></span></a></div>
+<div id="sidebar-content"> add link to view currently active package deliveries</div>
+{% endblock %}
+{% block scripts %}
+
+{% comment %} {% endcomment %}
+{% comment %} <script>
+  $(document).ready(function(){
+    $ajax({
+      url:'{% url "get_dashboard" %}',
+      success: function(data){
+        $('#vehicle-data').text(data.vehicle_data);
+      },
+      
+    });
+  });
+</script> {% endcomment %}
+{% endblock %}

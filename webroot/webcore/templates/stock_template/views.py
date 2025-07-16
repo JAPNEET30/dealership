@@ -7,6 +7,7 @@ from django.shortcuts import render
 @never_cache
 def search(request):
     return(render(request, 'stock_template/search_stock.html'))
+    
 @login_required
 @never_cache
 def current(request):
