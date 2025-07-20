@@ -5,74 +5,49 @@
 {% endblock %}
 {% block content %}
 
-<!-- <p> Write only for vehicle transport services.
-  quantity of vehicles <br/>
-  quantity of batteries<br/>
-  quantity of accessories<br/>
-  scan for vehicle qr to add to package<br/>
-  scan battery qr for adding battery or manually type the serial<br/>
-</p> -->
+{% comment %} Add a Team creation form
+Add Different parts of the site they can access.
+
+Access level:   
+Admin
+Team Manager
+Teams
+Insurance
+
+Fields:
+Team name
+Members
+Privileges-> Site Access
+
+{% endcomment %}
 
 <form class='forms' method="post" autocomplete="off"> 
   {% csrf_token %}
   <div>
-    <div><P>Package No.<em>1</em></P></div>
     <div class="libtn-grp" style="justify-items: stretch;">
-      <label class="libtn-label">Assign task to:</label>
-      <input class="libtn" type="list" list="employee_list" id="employee_select"/>
-      <datalist id="employee_list">
-        <option value="Employee 1">
-        <option value="Employee 2">
-      </datalist>
+      <label class="libtn-label">Team Name: </label>
+      <input class="libtn" type="text" id="employee_select"/>
     </div>
   </div>
     <div class="libtn-grp">
-      <label class="libtn-label">Note to create order: </label>
-      <!-- <input type="text" placeholder="Note" class='libtn'/> -->
-      <textarea class="libtn"></textarea>
+      <label class="libtn-label">Describe Team: </label>
+      <textarea class="libtn" id="team_description"></textarea>
     </div>
       <div class="libtn-grp" id="vehicle-num-grp">
-        <label class="libtn-label" disabled>No. of Vehicles</label>
+        <label class="libtn-label" disabled>Basic Site Access level: </label>
         <input id='vehicle_increment' type='button' value='+' class="libtn"/>
-        <input id="vehicle_number" type="number" value="1" min="1" max="100" title="battery_number" disabled/>
+        <input id="vehicle_number" type="number" value="1" min="1" max="100" title="battery_number" hidden/>
         <input id='vehicle_decrement' type='button' value='-' class="libtn"/>
       </div>
       <div id="vehicle_entry_list" style="flex-direction:column">
         <div class='libtn-grp'><input type='text' class='libtn' placeholder='Frame No.' id='vehicle_entry1'/>
-        <div class="libtn-grp"><input type='checkbox' class='libtn' id='acc_incl1'/><label for="acc_incl1" class="libtn">Acc. Incl.</label></div>
-        <div class="libtn-grp"><input type='checkbox' class='libtn' id='batt_incl1'/><label for="batt_incl1" class="libtn">Battery Incl.</label></div></div>
+        <div class="libtn-grp">
+          <input type='checkbox' class='libtn' id='access_read'/><label for="access_read" class="libtn">Read</label>
+          <input type='checkbox' class='libtn' id='access_write'/><label for="access_write" class="libtn">Write</label>
+          <input type='checkbox' class='libtn' id='access_update'/><label for="access_update" class="libtn">Update</label>
+          <input type='checkbox' class='libtn' id='access_delete'/><label for="access_delete" class="libtn">Delete</label>
+        </div></div>
       </div>
-    
-    <div class='libtn-grp'>
-      <input type='checkbox' class='libtn' id='battery_input'/>
-      <label for='battery_input' class='libtn'>Add Battery</label>
-      <div class="libtn-grp">
-        <input id='battery_increment' type='button' value='+' class="libtn" disabled/>
-        <input id="battery_number" type="number" value="0" min="0" max="100" title="battery_number" disabled/>
-        <input id='battery_decrement' type='button' value='-' class="libtn" disabled/>
-      </div>
-    </div><div id="battery_list"></div>
-    <div class='libtn-grp'>
-      <input type='checkbox' class='libtn' id='accessory_input'/>
-      <label for='accessory_input' class='libtn'>Add Accessories</label>
-      <div class="libtn-grp">
-        <input id='accessory_increment' type='button' value='+' class="libtn" disabled/>
-        <input id="accessory_number" type="number" value="0" min="0" max="100" title="battery_number" disabled/>
-        <input id='accessory_decrement' type='button' value='-' class="libtn" disabled/>
-      </div>
-    </div><div id="acc_list"></div>
-    <datalist id="driver_list">
-        <option>Loc 1</option>
-        <option>Loc 2</option>
-      </datalist>
-      <datalist id="location_list">
-        <option>Loc 1</option>
-        <option>Loc 2</option>
-      </datalist>
-    <div class=libtn-grp>
-      <input type="list" id="driver_entry" list="driver_list" class="libtn" placeholder = 'Select Driver'>
-      <input type="list" id="location_entry" list="location_list" class="libtn" placeholder="Select Location">
-    </div>
     <div class="libtn-grp">
         <input type="submit" value="Start Process" class="libtn"/>
         <input type="reset" value="Reset" class="libtn"/>

@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>Dashboard</title>
+{% endblock %}
+{% block content %}
+<a href="{% url 'new_team'%}" class="libtn"><p>Create Team<span></span></p>
+  <p>Add a new team role to your firm.</p></a>
+<a href="{% url 'new_member' %}" class="libtn"><p>Add Members<span></span></p>
+  <p>Add a new member to your Team.</p></a>
+<a href="{% url 'manage_members'%}" class="libtn"><p>Manage Members<span></span></p>
+  <p>Manage your members.</p></a>
+<a href="{% url 'manage_teams'%}" class="libtn"><p>Manage Teams<span></span></p>
+  <p>Manage your Existing Teams.</p></a>
+<a href="{% url 'manage_attendance'%}" class="libtn"><p>Member Attendance<span></span></p>
+  <p>Manage your preferences for the attendance system.</p></a>
+
+{% endblock %}
+{% block extra_data %}
+{% comment %} <div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
+<div id="sidebar-content"></div> {% endcomment %}
+{% endblock %}
+{% block scripts %}
+{% comment %} <script>
+  
+</script> {% endcomment %}
+{% endblock %}

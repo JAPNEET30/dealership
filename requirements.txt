@@ -2,3 +2,7 @@ django==5.0.6
 pytz==2024.1
 django-extensions
 anaconda-cloud-auth
+fastapi
+couchbase==4.4
+asyncio
+acouchbase

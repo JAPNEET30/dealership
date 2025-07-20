@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from pickle import TRUE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -142,3 +143,13 @@ EMAIL_HOST_USER = 'joratech@yahoo.com'
 EMAIL_HOST_PASSWORD = 'Mtech@3007#'
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
+
+#Cookie session
+# SESSION_COOKIE_AGE = 60*30
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_SECONDS = 60*30  # Expire after 30 minutes of inactivity
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True # Important: Make it activity-based, not just start-time based
+
+# Optional: Redirect after timeout
+SESSION_TIMEOUT_REDIRECT = '/login/?next=/session-expired/'
