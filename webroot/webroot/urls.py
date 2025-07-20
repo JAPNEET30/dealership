@@ -20,12 +20,12 @@ from django.urls import include
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('user/superadmin/', admin.site.urls),
+    # path('user/superadmin/', admin.site.urls),
 ]
 
 urlpatterns +=[
-    # path('dealership/', include('webcore.urls'), name='dealerships'),
-    # path('user/', include('usercore.urls'), name='user'),
+    path('dealership/', include('webcore.urls'), name='dealerships'),
+    path('user/', include('usercore.urls'), name='user'),
     path('', include('homepage.urls')),
 ]
 
