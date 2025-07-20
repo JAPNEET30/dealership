@@ -24,8 +24,8 @@ urlpatterns = [
 ]
 
 urlpatterns +=[
-    path('dealership/', include('webcore.urls'), name='dealerships'),
-    path('user/', include('usercore.urls'), name='user'),
+    # path('dealership/', include('webcore.urls'), name='dealerships'),
+    # path('user/', include('usercore.urls'), name='user'),
     path('', include('homepage.urls')),
 ]
 
