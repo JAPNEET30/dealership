@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u$ow8%sd64)5f3y)pw8dfb8wm(5vs_y_swes3+s#kl0+4qtmku'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -135,20 +135,11 @@ LOGOUT_REDIRECT_URL = '/user/logout/'
 AUTH_USER_MODEL = 'usercore.User'
 MEDIA_ROOT = Path(BASE_DIR, 'uploads/')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_HOST = 'smtp.mail.yahoo.com'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'joratech@yahoo.com'
-EMAIL_HOST_PASSWORD = 'Mtech@3007#'
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
-
 #Cookie session
-# SESSION_COOKIE_AGE = 60*30
+SESSION_COOKIE_AGE = 60*120
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # SESSION_SAVE_EVERY_REQUEST = True
-SESSION_EXPIRE_SECONDS = 60*30  # Expire after 30 minutes of inactivity
+SESSION_EXPIRE_SECONDS = 60*20  # Expire after 30 minutes of inactivity
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True # Important: Make it activity-based, not just start-time based
 
 # Optional: Redirect after timeout
