@@ -100,13 +100,18 @@
   --menu-bg-hover-color:var(--color-6-6);
   --menu-list-bg-color:var(--color-6-2);
   --menu-libtn-color:var(--black);
-  --menulbl-hover-color:var(--color-6-1);
+  --menulbl-hover-color:var(--color-6-4);
 
   --listing-text-color:var(--black);
   --listing-border-color:var(--color-6-1);
-  --listing-hightlight-color:var(--color-6-4);
-  
-  
+  --listing-hightlight-color:var(--color-6-4); 
+
+  --profile-border-color:var(--color-6-1);
+  --profile-text-color:var(--black);
+
+  --tables-font-color:var(--black);
+  --tables-border-color:var(--color-6-1);
+
 }
 
 html, body{
@@ -396,7 +401,7 @@ label,p{
       display:flex;
       padding:1% 1% 1% 1%;
       margin:0px 5px 3px 5px;
-      border:1px solid var(--libtn-hover-bg-color);
+      border:1px solid var(--libtn-grp-border);
       background-color: var(--form-input-bg-color);
       color:var(--form-input-text-color);
   }
@@ -483,15 +488,15 @@ fieldset{
 }
 
 .data-table{
-  color: var(--color-1-5);
+  color: var(--tables-font-color);
+  overflow: scroll;
   border-radius:5px;
-  width:100%;
-  border:1px solid var(--color-2-5);
+  min-width:100%;
+  border:solid 2px var(--tables-border-color);
   box-shadow: 3px 3px var(--color-1-3);
   display: flex;
   flex-direction: column;
   height:auto;
-  min-height:50dvh;
   text-wrap: nowrap;
   position: static;
     table{
@@ -518,7 +523,8 @@ fieldset{
       text-align: center;
       text-shadow: none;
       padding:3px;
-      color: var(--white);
+      color: var(--tables-font-color);
+      border: solid 1px var(--tables-border-color);
       font-weight: 600;
   }
   
@@ -555,12 +561,12 @@ fieldset{
     margin-top:0.5%;
     margin-bottom:0.5%;
     margin-left:2%;
-    border: solid 2px var(--color-3-3);
+    border: solid 2px var(--profile-border-color);
     border-radius: 5px;
     overflow:visible;
     display:flex;
     flex-direction: column;
-    color:var(--color-3-1);
+    color:var(--profile-text-color);
     justify-content: space-around;
     width:8rem;
     p{
