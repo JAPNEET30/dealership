@@ -5,27 +5,31 @@
 <title>Dashboard</title>
 {% endblock %}
 {% block content %}
-<a href="{% url 'track'%}" class="libtn"><p>Track Logistics<span></span></p>
-  <p>To Track and record logistics under firm</p></a>
-<a href="{% url 'stock' %}" class="libtn"><p>Stocks<span></span></p>
+<a href="{% url 'stock' %}" class="libtn"><p>CRM<span></span></p>
   <p>Manage inventory.</p></a>
-<a href="{% url 'workshop'%}" class="libtn"><p>Workshop<span></span></p>
-  <p>Manage pending tasks in workshop.</p></a>
 <a href="{% url 'insurance'%}" class="libtn"><p>Insurance<span></span></p>
   <p>View and update insurance inquiries.</p></a>
+<a href="{% url 'stock' %}" class="libtn"><p>Stocks<span></span></p>
+  <p>Manage inventory.</p></a>
 <a href="{% url 'teams'%}" class="libtn"><p>Teams<span></span></p>
   <p>Manage teams and members.</p></a>
-<a href="#" class="libtn"><p>Profile<span></span></p>
-  <p>Manage profile data.</p></a>
-<a href="{% url 'service'%}" class="libtn"><p>Services<span></span></p>
-  <p>Ask developer for addition services.</p></a>
+<a href="{% url 'track'%}" class="libtn"><p>Logistics<span></span></p>
+  <p>To Track and record load logistics. </p></a>
+<a href="{% url 'workshop'%}" class="libtn"><p>Workshop<span></span></p>
+  <p>Manage pending tasks in workshop.</p></a>
 {% endblock %}
 {% block extra_data %}
-<div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
-<div id="sidebar-content"></div>
+<div style="display: grid; gap: 0.5rem;margin-inline: 0.5rem;">
+<a href="profile" class="libtn profile" style="width:100%;"><p>Profile</p>
+  <p>Manage profile data.</p></a>
+<a href="{% url 'service'%}" class="libtn profile" style="width:100%;"><p>Connected Services</p>
+  <p>Ask developer for addition services.</p></a>
+<a href="{% url 'connect_with_us'%}" class="libtn profile" style="width:100%;"><p>Connect With us.</p>
+  <p>Report a problem or suggest a feature.</p></a>
+</div>
 {% endblock %}
 {% block scripts %}
-<script>
+<!-- <script>
   $(document).ready(function(){
     $ajax({
       url:'{% url "get_dashboard" %}',
@@ -35,5 +39,5 @@
       
     });
   });
-</script>
+</script> -->
 {% endblock %}

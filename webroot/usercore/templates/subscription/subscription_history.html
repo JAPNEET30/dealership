@@ -1,0 +1,34 @@
+{% extends "list_template.html" %}
+{% load static %}
+{% block title %}
+<title>Packages list</title>
+{% endblock %}
+{% block subTitle%}
+<h2>Packages history</h2><br/>
+{% endblock %}
+{% block extra_scripts %}
+{{ data|json_script:"json_data" }}
+<script>
+  document.getElementById('content').setAttribute('style', 'display:flex;flex-direction:column');
+    let div = document.getElementById('list_div');
+    let list_dic = JSON.parse(JSON.parse(document.getElementById('json_data').textContent));
+    list_dic.data.forEach(element => {
+        let list_div = document.createElement('a');
+        let list_element = document.createElement('h4');
+      
+        let end_date = document.createElement('p');
+        let duration = document.createElement('p');
+        
+        end_date.innerText = 'End Date: '+element['end_date'];
+        duration.innerText = 'Duration: '+element['duration']+' days';
+        list_element.innerText='₹'+element['amount'];
+        list_div.className='libtn';
+        list_div.appendChild(list_element)
+        
+        list_div.appendChild(end_date);
+        list_div.appendChild(duration);
+        div.appendChild(list_div);
+        list_div.setAttribute('href', '{% url "sub_history"%}'+'/'+JSON.stringify(element));
+    });
+</script>
+{% endblock %}

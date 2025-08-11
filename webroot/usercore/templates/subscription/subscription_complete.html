@@ -1,0 +1,25 @@
+{% extends 'registration/base.html' %} {% block content %}
+{% load static %}
+<link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+<section style="color: var(--white);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-centered">
+        <h1 class="mt-5 mb-3">Thank you.</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-3">
+        <h2>Paid Succesfully</h2>
+        <p>Your Transaction ID: GTRE34567IUY543R</p>
+        <p>Paid on: 2025-07-30</p>
+        <p>Amount Paid: ₹850</p>
+        <p>Paid to: Joratech Software Solutions</p>
+      </div>
+    </div>
+    <div class='libtn-grp' style='width=100%; justify-content:center;'>
+      <a class='libtn' href='{% url "index" %}'>Back to Dashboard</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

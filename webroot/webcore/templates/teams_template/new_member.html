@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 {% load static %}
 {% block title %}
-<title>JoraTech|New Package</title>
+<title>JoraTech|New Employee</title>
 {% endblock %}
 {% block content %}
 
@@ -12,242 +12,59 @@
   scan for vehicle qr to add to package<br/>
   scan battery qr for adding battery or manually type the serial<br/>
 </p> -->
-
-<form class='forms' method="post" autocomplete="off"> 
+<div id="result-div" style="width:100%;">
+<form id="member_form" class='forms' method="post" autocomplete="off" hx-post="{% url 'adding_member' %}" hx-swap="innerHTML" hx-target="#result-div">
   {% csrf_token %}
-  <div>
-    <div><P>Package No.<em>1</em></P></div>
-    <div class="libtn-grp" style="justify-items: stretch;">
-      <label class="libtn-label">Assign task to:</label>
-      <input class="libtn" type="list" list="employee_list" id="employee_select"/>
-      <datalist id="employee_list">
-        <option value="Employee 1">
-        <option value="Employee 2">
-      </datalist>
-    </div>
+  <div class="libtn-grp">
+    <P>New Employee No.<em style="font-weight: 700;">{{ id }}</em></P>
   </div>
-    <div class="libtn-grp">
-      <label class="libtn-label">Note to create order: </label>
-      <!-- <input type="text" placeholder="Note" class='libtn'/> -->
-      <textarea class="libtn"></textarea>
+  <section class="libtn-grp">
+    <label class="libtn-label">Employee Name : </label>
+    <input class="libtn" name="employee_name" id="employee_name" placeholder="Employee Name" required/>
+  </section>
+  <section class="libtn-grp">
+    <label class="libtn-label">Address : </label>
+    <textarea class="libtn" style="flex-grow: 1;" name="employee_address"></textarea>
+  </section>
+  <section class="libtn-grp">
+    <label class="libtn-label">Phone No.: </label>
+    <input type="number" class="libtn" id="employee_phone" name="employee_phone" placeholder="Employee Phone no." required/>
+  </section>
+  <section class="libtn-grp">
+    <label class="libtn-label">Age : </label>
+    <input id="employee_age" name="employee_age" type="number" value="14" min="14" max="100" title="employee_age" class="libtn" required/>
+  </section>
+  <section class="libtn-grp">
+    <label class="libtn-label">Access Password : </label>
+    <input class="libtn" id="employee_password" name="employee_password" placeholder="Employee Access Password" type="password" required/>
+  </section>
+  <section>
+    <label class="libtn-label">Admin_access : </label>
+    <div class="libtn-grp" style="flex-grow: 1;">
+      <input class="libtn" name="employee_is_admin" id="employee_is_admin" type="checkbox"/>
+      <label for="employee_is_admin" class="libtn">Is Admin</label>
     </div>
-      <div class="libtn-grp" id="vehicle-num-grp">
-        <label class="libtn-label" disabled>No. of Vehicles</label>
-        <input id='vehicle_increment' type='button' value='+' class="libtn"/>
-        <input id="vehicle_number" type="number" value="1" min="1" max="100" title="battery_number" disabled/>
-        <input id='vehicle_decrement' type='button' value='-' class="libtn"/>
-      </div>
-      <div id="vehicle_entry_list" style="flex-direction:column">
-        <div class='libtn-grp'><input type='text' class='libtn' placeholder='Frame No.' id='vehicle_entry1'/>
-        <div class="libtn-grp"><input type='checkbox' class='libtn' id='acc_incl1'/><label for="acc_incl1" class="libtn">Acc. Incl.</label></div>
-        <div class="libtn-grp"><input type='checkbox' class='libtn' id='batt_incl1'/><label for="batt_incl1" class="libtn">Battery Incl.</label></div></div>
-      </div>
-    
-    <div class='libtn-grp'>
-      <input type='checkbox' class='libtn' id='battery_input'/>
-      <label for='battery_input' class='libtn'>Add Battery</label>
-      <div class="libtn-grp">
-        <input id='battery_increment' type='button' value='+' class="libtn" disabled/>
-        <input id="battery_number" type="number" value="0" min="0" max="100" title="battery_number" disabled/>
-        <input id='battery_decrement' type='button' value='-' class="libtn" disabled/>
-      </div>
-    </div><div id="battery_list"></div>
-    <div class='libtn-grp'>
-      <input type='checkbox' class='libtn' id='accessory_input'/>
-      <label for='accessory_input' class='libtn'>Add Accessories</label>
-      <div class="libtn-grp">
-        <input id='accessory_increment' type='button' value='+' class="libtn" disabled/>
-        <input id="accessory_number" type="number" value="0" min="0" max="100" title="battery_number" disabled/>
-        <input id='accessory_decrement' type='button' value='-' class="libtn" disabled/>
-      </div>
-    </div><div id="acc_list"></div>
-    <datalist id="driver_list">
-        <option>Loc 1</option>
-        <option>Loc 2</option>
-      </datalist>
-      <datalist id="location_list">
-        <option>Loc 1</option>
-        <option>Loc 2</option>
-      </datalist>
-    <div class=libtn-grp>
-      <input type="list" id="driver_entry" list="driver_list" class="libtn" placeholder = 'Select Driver'>
-      <input type="list" id="location_entry" list="location_list" class="libtn" placeholder="Select Location">
-    </div>
+  </section>
     <div class="libtn-grp">
-        <input type="submit" value="Start Process" class="libtn"/>
+        <input type="submit" value="Add Employee" class="libtn"/>
         <input type="reset" value="Reset" class="libtn"/>
     </div>
 </form>
-{% endblock %}
-{% block extra_data %}
-{% comment %} <div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
-<div id="sidebar-content"></div> {% endcomment %}
+</div>
 {% endblock %}
 {% block extra_scripts %}
-<script>
-  const battery = document.querySelector('#battery_input')
-  const accessory = document.querySelector('#accessory_input')
-  const vehicle_list = document.querySelector('#vehicle_entry_list')
-
-  const bat_increment = document.querySelector('#battery_increment')
-  const bat_decrement = document.querySelector('#battery_decrement')
-  const bat_num = document.querySelector('#battery_number')
-  const bat_list = document.querySelector('#battery_list');
-
-  const acc_increment = document.querySelector('#accessory_increment')
-  const acc_decrement = document.querySelector('#accessory_decrement')
-  const acc_num = document.querySelector('#accessory_number')
-  const acc_list = document.querySelector('#acc_list');
-  
-  const vehicle_increment = document.querySelector('#vehicle_increment')
-  const vehicle_decrement = document.querySelector('#vehicle_decrement')
-  const vehicle_num = document.querySelector('#vehicle_number')
-  const vehicle_num_grp = document.querySelector('#vehicle-num-grp')
-
-  // Vehicle entry creator
-  
-  vehicle_increment.addEventListener('click', () => {
-    num1 = Number(vehicle_num.value);
-    num1++;
-    const new_div = document.createElement('div');
-    new_div.classList= 'libtn-grp';
-    const new_input = document.createElement('input');
-    new_input.type = 'text';
-    new_input.classList = 'libtn';
-    new_input.placeholder = 'Frame No.';
-    new_input.id = 'vehicle_entry'+num1;
-    new_div.appendChild(new_input);
-    let new_div_acc = document.createElement('div');
-    new_div_acc.classList = 'libtn-grp';
-    let new_div_bat = document.createElement('div');
-    new_div_bat.classList = 'libtn-grp';
-    let new_input_acc = document.createElement('input');
-    new_input_acc.type = 'checkbox';
-    new_input_acc.classList = 'libtn';
-    new_input_acc.id = 'acc_incl'+num1;
-    let new_input_bat = document.createElement('input');
-    new_input_bat.type = 'checkbox';
-    new_input_bat.classList = 'libtn';
-    new_input_bat.id = 'batt_incl'+num1;
-    let new_label_acc = document.createElement('label');
-    new_label_acc.type = 'checkbox';
-    new_label_acc.classList = 'libtn';
-    new_label_acc.innerText = 'Acc. Incl.';
-    new_label_acc.setAttribute('for', 'acc_incl'+num1)
-    let new_label_bat = document.createElement('label');
-    new_label_bat.type = 'checkbox';
-    new_label_bat.classList = 'libtn';
-    new_label_bat.innerText = 'Battery Incl.';
-    new_label_bat.setAttribute('for','batt_incl'+num1);
-
-    new_div_acc.appendChild(new_input_acc);
-    new_div_acc.appendChild(new_label_acc);
-    new_div_bat.appendChild(new_input_bat);
-    new_div_bat.appendChild(new_label_bat);
-
-    new_div.appendChild(new_div_acc);
-    new_div.appendChild(new_div_bat)
-    vehicle_num.setAttribute('value', num1);
-    vehicle_list.appendChild(new_div);
-
-  })
-
-  vehicle_decrement.addEventListener('click', () => {
-    num1 = Number(vehicle_num.value);
-    if (num1 > 1){
-      num1--;
-      vehicle_list.removeChild(vehicle_list.lastElementChild);
-    }
-    vehicle_num.setAttribute('value', num1);
-  })
-
-  battery.addEventListener('change', ()=> {
-      if (battery.checked){
-      bat_increment.disabled = false;
-      bat_decrement.disabled = false;
-    }
-    else{
-      bat_increment.disabled = true;
-      bat_decrement.disabled = true;
-      bat_num.setAttribute('value', '0');
-      bat_list.innerHTML = '';
-    }
-  })
-  accessory.addEventListener('change', ()=> {
-      if (accessory.checked){
-      acc_increment.disabled = false;
-      acc_decrement.disabled = false;
-    }
-    else{
-      acc_decrement.disabled = true;
-      acc_increment.disabled = true;
-      acc_num.setAttribute('value', '0');
-      acc_list.innerHTML = '';
-    }
-  })
-
-  bat_increment.addEventListener('click', () => {
-    num1 = Number(bat_num.value);
-    num1++;
-    const new_div = document.createElement('div');
-    new_div.classList= 'libtn-grp';
-    const new_input = document.createElement('input');
-    new_input.type = 'text';
-    new_input.classList = 'libtn';
-    new_input.placeholder = 'Battery No.';
-    new_input.id = 'bat_entry'+num1;
-    // const new_quantity = document.createElement('input');
-    // new_quantity.type = 'number';
-    // new_quantity.classList = 'libtn';
-    // new_quantity.id = 'bat_quant'+num1;
-    // new_quantity.setAttribute('min', '0');
-    // new_quantity.setAttribute('max', '100');
-    bat_num.setAttribute('value', num1);
-
-    new_div.appendChild(new_input);
-    // new_div.appendChild(new_quantity);
-    bat_list.appendChild(new_div);
-  })
-
-  bat_decrement.addEventListener('click', () => {
-    num1 = Number(bat_num.value);
-    if (num1 >0){
-      num1= num1-1;
-    }
-    bat_num.setAttribute('value', num1);
-    bat_list.removeChild(bat_list.lastElementChild);
-  })
-
-  acc_increment.addEventListener('click', () => {
-    num1 = Number(acc_num.value);
-    num1++;
-    const new_div = document.createElement('div');
-    new_div.classList= 'libtn-grp';
-    const new_input = document.createElement('input');
-    new_input.type = 'text';
-    new_input.classList = 'libtn';
-    new_input.placeholder = 'Acc Name';
-    new_input.id = 'acc_entry'+num1;
-    const new_quantity = document.createElement('input');
-    new_quantity.type = 'number';
-    new_quantity.classList = 'libtn';
-    new_quantity.id = 'acc_quant'+num1;
-    new_quantity.setAttribute('min', '0');
-    new_quantity.setAttribute('max', '100');
-    acc_num.setAttribute('value', num1);
-
-    new_div.appendChild(new_input);
-    new_div.appendChild(new_quantity);
-    acc_list.appendChild(new_div);
-  })
-
-  acc_decrement.addEventListener('click', () => {
-    num1 = Number(acc_num.value);
-    if (num1 >0){
-      num1= num1-1;
-    }
-    acc_num.setAttribute('value', num1);
-    acc_list.removeChild(acc_list.lastElementChild);
-  })
-</script>
+<script></script>
+{% endblock %}
+{% block extra_data %}
+<h5>Instructions</h5>
+<p style='font-size: 12px; padding: 2%;'>The values are as follows:<br>
+  <em style='font-weight: 700;'>New Employee no:</em> Indicates employee number<br><br>
+  <em style='font-weight: 700;'>Employee Name:</em> Name of the Employee who will be assigned to teams.<br><br>
+  <em style='font-weight: 700;'>Address :</em> Address of the registered employee.<br><br>
+  <em style='font-weight: 700;'>Phone No.:</em> Phone no. of the employee.<br><br>
+  <em style='font-weight: 700;'>Password :</em> Password for the employee to acess the app.<br><br>
+  <em style='font-weight: 700;'>Admin Access :</em> Indicates if the employee has access to everything.<br><br>
+  <em style='font-weight: 700;'>Submit :</em> To add the values and register the employee under the company.<br><br>
+  <em style='font-weight: 700;'>Reset :</em> To clear all the values in the form and return to default state.<br><br>
+</p>
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'registration/base.html' %} {% block content %}
+{% load static %}
+<section style="color: var(--white);">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-centered">
+        <h1 class="mt-5 mb-3">Pay to Access...</h1>
+        <p>Choose a pay plan to access the data and more features.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 mt-3">
+
+<h3> Payment is secured with razorpay payment gateway.</h3>
+<h3 style = 'padding-top:5%'>Plans for you to choose</h3>
+<form class="forms" method="post">
+  {% csrf_token %}
+        <fieldset style='border:dashed 3px var(--color-3-3)'>
+          <legend style='padding:3px 6px'>₹850/month*</legend>
+            <ul>
+              <li>All the features.</li>
+              <li>Early access to newer features.</li>
+
+            </ul>
+            <div class="libtn-grp">
+              <input type='submit' class="litbn" value="Pay Now"/>
+            </div>
+        </fieldset>
+      </form>
+      </div>
+      <h7>* a month is defined as 30 days of time from the day of payment.</h7>
+    </div>
+  </div>
+</section>
+{% endblock %}

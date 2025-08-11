@@ -1,8 +1,7 @@
-django>=4.0.6
-pytz>=2024.1
+django>5
+pytz
 django-extensions
-anaconda-cloud-auth
-fastapi
-couchbase>=4.0
+couchbase==4.4
 asyncio
+channels[daphne]
 gunicorn

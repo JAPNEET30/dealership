@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>Dashboard</title>
+{% endblock %}
+{% block content %}
+<a href="{% url 'track'%}" class="libtn"><p>Track Logistics<span></span></p>
+  <p>To Track and record logistics under firm</p></a>
+<a href="{% url 'stock' %}" class="libtn"><p>Stocks<span></span></p>
+  <p>Manage inventory.</p></a>
+<a href="{% url 'workshop'%}" class="libtn"><p>Workshop<span></span></p>
+  <p>Manage pending tasks in workshop.</p></a>
+<a href="{% url 'insurance'%}" class="libtn"><p>Insurance<span></span></p>
+  <p>View and update insurance inquiries.</p></a>
+<a href="{% url 'teams'%}" class="libtn"><p>Teams<span></span></p>
+  <p>Manage teams and members.</p></a>
+<a href="#" class="libtn"><p>Profile<span></span></p>
+  <p>Manage profile data.</p></a>
+<a href="{% url 'service'%}" class="libtn"><p>Services<span></span></p>
+  <p>Ask developer for addition services.</p></a>
+{% endblock %}
+{% block extra_data %}
+<div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
+<div id="sidebar-content"></div>
+{% endblock %}
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+    $ajax({
+      url:'{% url "get_dashboard" %}',
+      success: function(data){
+        $('#vehicle-data').text(data.vehicle_data);
+      },
+      
+    });
+  });
+</script>
+{% endblock %}

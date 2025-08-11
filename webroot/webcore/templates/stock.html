@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 {% load static %}
 {% block title %}
-<link rel="stylesheet" href="{% static 'css/stock.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
 <title>Dashboard</title>
 {% endblock %}
 {% block content %}
@@ -11,7 +11,7 @@
   <p>View upcoming stock details.</p></a>
 <a href="{% url 'insurance'%}" class="libtn"><p>Outgoing Stock<span></span></p>
   <p>View outgoing stock details.</p></a>
-<a href="{% url 'department'%}" class="libtn"><p>Damaged Stock<span></span></p>
+<a href="{% url 'teams'%}" class="libtn"><p>Damaged Stock<span></span></p>
   <p>View damaged stock records.</p></a>
 {% endblock %}
 {% block extra_data %}
@@ -24,7 +24,7 @@
 <a class="libtn" href="#">Search<span></span></a>
 {% endblock %}
 {% block extra_scripts %}
-  <script src="{% static 'js/stocks.js' %}"></script>
+  <!-- <script src="{% static 'js/stocks.js' %}"></script> -->
   <script>
     $(document).ready(function(){
         $.ajax({

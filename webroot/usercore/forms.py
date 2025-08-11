@@ -20,7 +20,7 @@ class registrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2', 'first_name', 'last_name', 'phone_contact', 'email', 'businessName', 'gstin_Number')
+        fields = ('username', 'first_name', 'last_name', 'password1', 'password2', 'email', 'phone_contact', 'businessName', 'gstin_Number', 'business_address')
         REQUIRED_FIELDS=["email", 'username', 'password1', 'password2', 'first_name', 'phone_contact', 'businessName']
         
     

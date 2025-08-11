@@ -1,0 +1,35 @@
+{% extends "list_template.html" %}
+{% load static %}
+<link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+{% block title %}
+<title>Packages list</title>
+{% endblock %}
+{% block subTitle%}
+<h2>Packages history</h2><br/>
+{% endblock %}
+{% block extra_scripts %}
+{{ data|json_script:"json_data" }}
+<script>
+  document.getElementById('content').setAttribute('style', 'display:flex;flex-direction:column');
+    let div = document.getElementById('list_div');
+    let element = JSON.parse(JSON.parse(document.getElementById('json_data').textContent));
+    console.log(element)
+        let list_div = document.createElement('fieldset');
+        let list_element = document.createElement('legend');
+        let start_date = document.createElement('p');
+        let end_date = document.createElement('p');
+        let duration = document.createElement('p');
+        let transaction_id = document.createElement('p');
+        start_date.innerText = 'Start Date: '+element['start_date'];
+        end_date.innerText = 'End Date: '+element['end_date'];
+        duration.innerText = 'Duration: '+element['duration']+' days';
+        transaction_id.innerText = 'Transaction_id: '+element['transaction_id'];
+        list_element.innerText='₹'+element['amount']
+        list_div.appendChild(list_element)
+        list_div.appendChild(start_date);
+        list_div.appendChild(end_date);
+        list_div.appendChild(duration);
+        list_div.appendChild(transaction_id);
+        div.appendChild(list_div);
+</script>
+{% endblock %}

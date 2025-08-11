@@ -11,3 +11,7 @@ urlpatterns =[
     path('member_template/', views.member_template, name='members_template'),
     path('team_template/', views.team_template, name='team_template'),
 ]
+
+urlpatterns+=[
+    path('adding_member/', views.adding_member, name='adding_member'),
+]
