@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/>
+<title>JoraTech|Connect </title>
+{% endblock %}
+{% block content %}
+<a href="{% url 'package_history'%}" class="libtn"><p>Report a problem<span></span></p>
+  <p>Report any issue you are facing regarding the functionality of the app.</p></a>
+
+<a href="{% url 'new_package' %}" class="libtn"><p>suggest a feature<span></span></p>
+  <p>Suggest a new feature that you think is beneficial for you and the users.</p></a>
+
+{% endblock %}
+{% block extra_data %}
+<div><a id="sidebar-icon">HELP<span></span></a></div>
+<div id="sidebar-content"> add link to view currently active package deliveries</div>
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}

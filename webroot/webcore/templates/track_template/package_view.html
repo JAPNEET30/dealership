@@ -1,0 +1,28 @@
+{% extends "list_template.html" %}
+{% load static %}
+{% block title %}
+<title>Package View</title>
+{% endblock %}
+{% block subTitle%}
+<h2>Packages No. #00{{ number }}</h2>
+<h3 style = 'padding-top:5%'>Plans for you to choose</h3>
+<form class="forms" method="post">
+  {% csrf_token %}
+        <fieldset style='border:dashed 3px var(--color-3-3)'>
+          <legend style='padding:3px 6px'>₹850/month*</legend>
+            <ul>
+              <li>All the features.</li>
+              <li>Early access to newer features.</li>
+
+            </ul>
+            <div class="libtn-grp">
+              <input type='submit' class="litbn" value="Pay Now"/>
+            </div>
+        </fieldset>
+      </form>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+            
+</script>
+{% endblock %}

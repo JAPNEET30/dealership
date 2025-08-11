@@ -1,8 +1,7 @@
 {% extends 'registration/base.html' %} {% block content %}
 {% load static %}
 <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-<section style="
-color: var(--white);">
+<section >
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-centered">
@@ -41,21 +40,8 @@ color: var(--white);">
           {% endfor %} {% endif %}
           <div class="libtn-grp">
             <button type="submit" class="libtn">
-              <!-- <lord-icon
-              src="https://cdn.lordicon.com/lakxizal.json"
-              trigger="loop"
-              delay="1000"
-              stroke="bold"
-              style="width:50px;height:50px">
-          </lord-icon> -->
           <br/>Login</button>
             <a href="{% url 'register' %}" class="libtn">
-              <!-- <lord-icon
-              src="https://cdn.lordicon.com/ptdgcvwb.json"
-              trigger="hover"
-              stroke="bold"
-              style="width:50px;height:50px">
-          </lord-icon> -->
           <br/>Register</a>
           </div>
           <div>Forgot Password? <a href={% url 'password_reset' %}>Click here,</a> to reset.</div>

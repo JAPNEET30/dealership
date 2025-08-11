@@ -5,11 +5,17 @@
 <title>JoraTech|Track Logistics </title>
 {% endblock %}
 {% block content %}
-<a href="{% url 'package_history'%}" class="libtn"><p>History<span></span></p>
+<a href="{% url 'package_history'%}" class="libtn"><p>Load History<span></span></p>
   <p>View past packages</p></a>
 
-<a href="{% url 'new_package' %}" class="libtn"><p>New Package<span></span></p>
+<a href="{% url 'new_package' %}" class="libtn"><p>New Load<span></span></p>
   <p>Place order of new packages</p></a>
+
+<a href="{% url 'network' %}" class="libtn"><p>Network<span></span></p>
+  <p>Manage network members for different locations</p></a>
+
+<a href="{% url 'network_accounts' %}" class="libtn"><p>Network Accounts<span></span></p>
+  <p>Manage network members for different locations</p></a>
 
 {% endblock %}
 {% block extra_data %}

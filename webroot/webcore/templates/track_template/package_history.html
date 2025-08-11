@@ -1,34 +1,56 @@
-{% extends "base_generic.html" %}
+{% extends "list_template.html" %}
 {% load static %}
 {% block title %}
-{% comment %} <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"/> {% endcomment %}
-<title>JoraTech|New Package</title>
+<title>Packages list</title>
 {% endblock %}
-{% block content %}
-
-<p> Write only for vehicle transport services.</p>
-<form>
-    <label>Note to create order: </label>
-    <input type="text" /><br/>
-    <label>Manual Entry: </label>
-    <input type="checkbox"/>
-    <p> </p>
-</form>
+{% block subTitle%}
+<h2>Packages history</h2><br/>
 {% endblock %}
-{% block extra_data %}
-<div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
-<div id="sidebar-content"></div>
-{% endblock %}
-{% block scripts %}
+{% block extra_scripts %}
 <script>
-  $(document).ready(function(){
-    $ajax({
-      url:'{% url "get_dashboard" %}',
-      success: function(data){
-        $('#vehicle-data').text(data.vehicle_data);
+  document.getElementById('content').setAttribute('style', 'display:flex;flex-direction:column');
+    let div = document.getElementById('list_div');
+    let list_dic = {
+      "list": ['1','2','3','4','5'],
+      "1":{
+        'date_created':'2025-04-23',
+        'delivered_to':'Adawal'
       },
-      
+      "2":{
+        'date_created':'2025-04-23',
+        'delivered_to':'Adawal'
+      },
+      "3":{
+        'date_created':'2025-04-23',
+        'delivered_to':'Adawal'
+      },
+      "4":{
+        'date_created':'2025-04-23',
+        'delivered_to':'Adawal'
+      },
+      "5":{
+        'date_created':'2025-04-23',
+        'delivered_to':'Adawal'
+      }
+    }
+    let list = ['#0001','#0002','#0003','#0004','#0005','#0006','#0007','#0008','#0009','#0010','#0011','#0012','#0013','#0014','#0015'];
+    list_dic.list.forEach(element => {
+        let list_div = document.createElement('a');
+        let list_element = document.createElement('h4');
+        let date_data = document.createElement('p');
+        let delivery_data = document.createElement('p');
+        // date_data.innerText = 'Date Created:2025-03-12'
+        // delivery_data.innerText = 'Delivered to:Adawal'
+        let list_ = list_dic[element]
+        date_data.innerText = 'Date Created: '+list_['date_created'];
+        delivery_data.innerText = 'Delivery to: '+list_['delivered_to'];
+        list_element.innerText='#00'+element;
+        list_div.className='libtn';
+        list_div.appendChild(list_element)
+        list_div.appendChild(date_data);
+        list_div.appendChild(delivery_data);
+        div.appendChild(list_div);
+        list_div.setAttribute('href', '{% url "package_history"%}'+element+'/')
     });
-  });
 </script>
 {% endblock %}

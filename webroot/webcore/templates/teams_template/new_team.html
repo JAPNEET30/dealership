@@ -18,211 +18,304 @@ Fields:
 Team name
 Members
 Privileges-> Site Access
-
 {% endcomment %}
 
 <form class='forms' method="post" autocomplete="off"> 
   {% csrf_token %}
-  <div>
-    <div class="libtn-grp" style="justify-items: stretch;">
+    <section class="libtn-grp" style="justify-items: stretch;">
       <label class="libtn-label">Team Name: </label>
-      <input class="libtn" type="text" id="employee_select"/>
-    </div>
-  </div>
-    <div class="libtn-grp">
+      <input class="libtn" type="text" id="employee_select" required/>
+    </section>
+    <section class="libtn-grp">
       <label class="libtn-label">Describe Team: </label>
-      <textarea class="libtn" id="team_description"></textarea>
-    </div>
-      <div class="libtn-grp" id="vehicle-num-grp">
-        <label class="libtn-label" disabled>Basic Site Access level: </label>
-        <input id='vehicle_increment' type='button' value='+' class="libtn"/>
-        <input id="vehicle_number" type="number" value="1" min="1" max="100" title="battery_number" hidden/>
-        <input id='vehicle_decrement' type='button' value='-' class="libtn"/>
-      </div>
-      <div id="vehicle_entry_list" style="flex-direction:column">
-        <div class='libtn-grp'><input type='text' class='libtn' placeholder='Frame No.' id='vehicle_entry1'/>
+      <textarea class="libtn" id="team_description" style="flex-grow: 1;"></textarea>
+    </section>
+      <section>
+        <label class="libtn-label">Number of members to add: </label>
         <div class="libtn-grp">
-          <input type='checkbox' class='libtn' id='access_read'/><label for="access_read" class="libtn">Read</label>
-          <input type='checkbox' class='libtn' id='access_write'/><label for="access_write" class="libtn">Write</label>
-          <input type='checkbox' class='libtn' id='access_update'/><label for="access_update" class="libtn">Update</label>
-          <input type='checkbox' class='libtn' id='access_delete'/><label for="access_delete" class="libtn">Delete</label>
-        </div></div>
+          <input id='member_increment' type='button' value='+' class="libtn"/>
+          <input id="member_number" type="number" value="1" min="1" max="100" class="libtn" disabled/>
+          <input id='member_decrement' type='button' value='-' class="libtn"/>
+        </div>
+      </section>
+
+      <datalist id="employee_name_list">
+        
+      </datalist>
+      <datalist id="employee_num_list">
+        
+      </datalist>
+
+      <datalist id="site_access_names">
+        <option>CRM</option>
+        <option>Logistics</option>
+        <option>Teams</option>
+        <option>Stock</option>
+        <option>Services</option>
+        <option>Insurance</option>
+        <option>Workshop</option>
+      </datalist>
+      <div class="data-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:10%">Employee No.</th>
+              <th>Employee Name</th>
+              <th>Site</th>
+              <th>Manager</th>
+              <th>View</th>
+              <th>Write</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="employee_list">
+            <tr>
+              <td><input list="employee_num_list" placeholder="Employee id" class="libtn" id="member_id_1"/></td>
+              <td><input list="employee_name_list" placeholder="Employee Name" class="libtn" id="member_name_1"/></td>
+              <td><input list="site_access_names" placeholder="Select Site" class="libtn" id="site_name_1"/></td>
+              <td><div class="libtn-grp">
+                <input type="checkbox" class="libtn" id="site_manage_1"/><label class="libtn" for="site_manage_1">Manager</label>
+              </div></td>
+              <td><div class="libtn-grp">
+                <input type="checkbox" class="libtn" id="site_view_1"/><label class="libtn" for="site_view_1">Allow</label>
+              </div></td>
+              <td><div class="libtn-grp">
+                <input type="checkbox" class="libtn" id="site_write_1"/><label class="libtn" for="site_write_1">Allow</label>
+              </div></td>
+              <td><div class="libtn-grp">
+                  <input type="checkbox" class="libtn" id="site_update_1"/><label class="libtn" for="site_update_1">Allow</label>
+                </div></td>
+              <td><div class="libtn-grp">
+                  <input type="checkbox" class="libtn" id="site_delete_1"/><label class="libtn" for="site_delete_1">Allow</label>
+                </div></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     <div class="libtn-grp">
-        <input type="submit" value="Start Process" class="libtn"/>
+        <input type="submit" value="Create team" class="libtn"/>
         <input type="reset" value="Reset" class="libtn"/>
     </div>
 </form>
 {% endblock %}
 {% block extra_data %}
-{% comment %} <div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
-<div id="sidebar-content"></div> {% endcomment %}
+<h5>Instructions</h5>
+<p style='font-size: 12px; padding: 2%;'>The values are as follows:<br>
+  <em style='font-weight: 700;'>Team name :</em> Name of the Team or the group of people.<br><br>
+  <em style='font-weight: 700;'>Describe Team :</em> Describe the functionality of the team and what is there duty.<br><br>
+  <em style='font-weight: 700;'>No. of members:</em> Size of the team or the number of members of the team.<br><br>
+  <em style='font-weight: 700;'>Employee no. :</em> Select the id of the employee to select.<br><br>
+  <em style='font-weight: 700;'>Employee Name :</em> Select the name of the employee to assign the duty.<br><br>
+  <em style='font-weight: 700;'>Site :</em> Select the site you want to provide access for the employee.<br><br>
+  <em style='font-weight: 700;'>Manager :</em> Assign the employee to access all the information under that particular site and manipulate it. <br><br>
+  <em style='font-weight: 700;'>View :</em> Privilege to delete the information on that particular site only. <br><br>
+  <em style='font-weight: 700;'>Write :</em> Privilege to write or add information on that particular site only. <br><br>
+  <em style='font-weight: 700;'>Update :</em> Privilege to update the information on that particular site only. <br><br>
+  <em style='font-weight: 700;'>Delete :</em> Privilege to delete the information on that particular site only. <br><br>
+</p>
 {% endblock %}
 {% block extra_scripts %}
+{{employee_name_list | json_script:"employee_name"}}
 <script>
-  const battery = document.querySelector('#battery_input')
-  const accessory = document.querySelector('#accessory_input')
-  const vehicle_list = document.querySelector('#vehicle_entry_list')
+  let employee_num_data = {{ employee_num_list }};
+  let employee_name_data = JSON.parse(document.getElementById('employee_name').textContent);
 
-  const bat_increment = document.querySelector('#battery_increment')
-  const bat_decrement = document.querySelector('#battery_decrement')
-  const bat_num = document.querySelector('#battery_number')
-  const bat_list = document.querySelector('#battery_list');
-
-  const acc_increment = document.querySelector('#accessory_increment')
-  const acc_decrement = document.querySelector('#accessory_decrement')
-  const acc_num = document.querySelector('#accessory_number')
-  const acc_list = document.querySelector('#acc_list');
-  
-  const vehicle_increment = document.querySelector('#vehicle_increment')
-  const vehicle_decrement = document.querySelector('#vehicle_decrement')
-  const vehicle_num = document.querySelector('#vehicle_number')
-  const vehicle_num_grp = document.querySelector('#vehicle-num-grp')
+  const member_list = document.querySelector('#employee_list')
+  const member_increment = document.querySelector('#member_increment')
+  const member_decrement = document.querySelector('#member_decrement')
+  const member_num = document.querySelector('#member_number')
 
   // Vehicle entry creator
   
-  vehicle_increment.addEventListener('click', () => {
-    num1 = Number(vehicle_num.value);
+  member_increment.addEventListener('click', () => {
+    num1 = Number(member_num.value);
     num1++;
-    const new_div = document.createElement('div');
-    new_div.classList= 'libtn-grp';
-    const new_input = document.createElement('input');
-    new_input.type = 'text';
-    new_input.classList = 'libtn';
-    new_input.placeholder = 'Frame No.';
-    new_input.id = 'vehicle_entry'+num1;
-    new_div.appendChild(new_input);
-    let new_div_acc = document.createElement('div');
-    new_div_acc.classList = 'libtn-grp';
-    let new_div_bat = document.createElement('div');
-    new_div_bat.classList = 'libtn-grp';
-    let new_input_acc = document.createElement('input');
-    new_input_acc.type = 'checkbox';
-    new_input_acc.classList = 'libtn';
-    new_input_acc.id = 'acc_incl'+num1;
-    let new_input_bat = document.createElement('input');
-    new_input_bat.type = 'checkbox';
-    new_input_bat.classList = 'libtn';
-    new_input_bat.id = 'batt_incl'+num1;
-    let new_label_acc = document.createElement('label');
-    new_label_acc.type = 'checkbox';
-    new_label_acc.classList = 'libtn';
-    new_label_acc.innerText = 'Acc. Incl.';
-    new_label_acc.setAttribute('for', 'acc_incl'+num1)
-    let new_label_bat = document.createElement('label');
-    new_label_bat.type = 'checkbox';
-    new_label_bat.classList = 'libtn';
-    new_label_bat.innerText = 'Battery Incl.';
-    new_label_bat.setAttribute('for','batt_incl'+num1);
+    const new_tr = document.createElement('tr');
+    const new_td_member_number = document.createElement('td');
+    const new_td_member_name = document.createElement('td');
+    const new_td_site = document.createElement('td');
+    const new_td_manage = document.createElement('td');
+    const new_td_view = document.createElement('td');
+    const new_td_write = document.createElement('td');
+    const new_td_update = document.createElement('td');
+    const new_td_delete = document.createElement('td');
 
-    new_div_acc.appendChild(new_input_acc);
-    new_div_acc.appendChild(new_label_acc);
-    new_div_bat.appendChild(new_input_bat);
-    new_div_bat.appendChild(new_label_bat);
+    // const new_div_member_number = document.createElement('input');
+    // const new_div_member_name = document.createElement('input');
+    // const new_div_site = document.createElement('div');
+    const new_div_manage = document.createElement('div');
+    const new_div_view = document.createElement('div');
+    const new_div_write = document.createElement('div');
+    const new_div_update = document.createElement('div');
+    const new_div_delete = document.createElement('div');
 
-    new_div.appendChild(new_div_acc);
-    new_div.appendChild(new_div_bat)
-    vehicle_num.setAttribute('value', num1);
-    vehicle_list.appendChild(new_div);
+    const new_input_member_number = document.createElement('input');
+    const new_input_member_name = document.createElement('input');
+    const new_input_site = document.createElement('input');
+    const new_input_manage = document.createElement('input');
+    const new_input_view = document.createElement('input');
+    const new_input_write = document.createElement('input');
+    const new_input_update = document.createElement('input');
+    const new_input_delete = document.createElement('input');
 
+    // const new_label_member_number = document.createElement('label');
+    // const new_label_member_name = document.createElement('label');
+    // const new_label_site = document.createElement('label');
+    const new_label_manage = document.createElement('label');
+    const new_label_view = document.createElement('label');
+    const new_label_write = document.createElement('label');
+    const new_label_update = document.createElement('label');
+    const new_label_delete = document.createElement('label');
+
+    // Adding to tr
+    new_tr.appendChild(new_td_member_number);
+    new_tr.appendChild(new_td_member_name);
+    new_tr.appendChild(new_td_site);
+    new_tr.appendChild(new_td_manage);
+    new_tr.appendChild(new_td_view);
+    new_tr.appendChild(new_td_write);
+    new_tr.appendChild(new_td_update);
+    new_tr.appendChild(new_td_delete);
+
+    // Adding to td
+    new_td_member_number.appendChild(new_input_member_number);
+    new_td_member_name.appendChild(new_input_member_name);
+    new_td_site.appendChild(new_input_site);
+    new_td_manage.appendChild(new_div_manage);
+    new_td_view.appendChild(new_div_view);
+    new_td_write.appendChild(new_div_write);
+    new_td_update.appendChild(new_div_update);
+    new_td_delete.appendChild(new_div_delete);
+
+    // Adding to div
+    new_div_manage.appendChild(new_input_manage);
+    new_div_view.appendChild(new_input_view);
+    new_div_write.appendChild(new_input_write);
+    new_div_update.appendChild(new_input_update);
+    new_div_delete.appendChild(new_input_delete);
+
+    new_div_manage.classList = 'libtn-grp';
+    new_div_view.classList = 'libtn-grp';
+    new_div_write.classList = 'libtn-grp';
+    new_div_update.classList = 'libtn-grp';
+    new_div_delete.classList = 'libtn-grp';
+
+    // Adding to div
+    new_div_manage.appendChild(new_label_manage);
+    new_div_view.appendChild(new_label_view);
+    new_div_write.appendChild(new_label_write);
+    new_div_update.appendChild(new_label_update);
+    new_div_delete.appendChild(new_label_delete);
+
+    // new_input_member_number.type='text';
+    new_input_member_number.setAttribute('list','employee_num_list');
+    new_input_member_number.classList='libtn';
+    new_input_member_number.placeholder='Employee No.';
+    new_input_member_number.id='member_id_'+num1;
+
+    // new_input_member_name.type='text';
+    new_input_member_name.setAttribute('list','employee_name_list');
+    new_input_member_name.classList='libtn';
+    new_input_member_name.placeholder='Employee Name';
+    new_input_member_name.id='member_name_'+num1;
+
+    // new_input_site.type='text';
+    new_input_site.setAttribute('list','site_access_names');
+    new_input_site.classList='libtn';
+    new_input_site.placeholder='Select site';
+    new_input_site.id='site_name_'+num1;
+
+    new_input_manage.type='checkbox';
+    new_input_manage.classList='libtn';
+    new_input_manage.id='site_manage_'+num1;
+
+    new_input_view.type='checkbox';
+    new_input_view.classList='libtn';
+    new_input_view.id='site_view_'+num1;
+
+    new_input_write.type='checkbox';
+    new_input_write.classList='libtn';
+    new_input_write.id='site_write_'+num1;
+
+    new_input_update.type='checkbox';
+    new_input_update.classList='libtn';
+    new_input_update.id='site_update_'+num1;
+
+    new_input_delete.type='checkbox';
+    new_input_delete.classList='libtn';
+    new_input_delete.id='site_delete_'+num1;
+    new_label_manage.setAttribute('for', 'site_manage_'+num1);
+    new_label_manage.classList = 'libtn';
+    new_label_manage.innerText = 'Manager';
+    new_label_view.setAttribute('for', 'site_view_'+num1);
+    new_label_view.classList = 'libtn';
+    new_label_view.innerText = 'Allow';
+    new_label_write.setAttribute('for', 'site_write_'+num1);
+    new_label_write.classList = 'libtn';
+    new_label_write.innerText = 'Allow';
+    new_label_update.setAttribute('for', 'site_update_'+num1);
+    new_label_update.classList = 'libtn';
+    new_label_update.innerText = 'Allow';
+    new_label_delete.setAttribute('for', 'site_delete_'+num1);
+    new_label_delete.classList = 'libtn';
+    new_label_delete.innerText = 'Allow';
+
+    member_num.setAttribute('value', num1);
+    member_list.appendChild(new_tr);
+
+    let element = document.getElementById('member_id_'+num1)
+    let element_ = document.getElementById('member_name_'+num1)
+    element.addEventListener('change', () => {
+      element_.value = data['data'][element.value]['name'];
+
+    });
+    element_.addEventListener('change', () => {
+      data['data']['members'].forEach(id => {
+          if (String(data['data'][id]['name']) == element_.value) {
+            element.value = id;
+          }
+        });
+    });
   })
+    let element = document.getElementById('member_id_1');
+    let element_ = document.getElementById('member_name_1');
+    element.addEventListener('change', () => {
+      element_.value = data['data'][element.value]['name'];
 
-  vehicle_decrement.addEventListener('click', () => {
-    num1 = Number(vehicle_num.value);
+    });
+
+    element_.addEventListener('change', () => {
+      data['data']['members'].forEach(id => {
+          if (String(data['data'][id]['name']) == element_.value) {
+            element.value = id;
+          }
+        });
+    });
+
+  member_decrement.addEventListener('click', () => {
+    num1 = Number(member_num.value);
     if (num1 > 1){
       num1--;
-      vehicle_list.removeChild(vehicle_list.lastElementChild);
+      member_list.removeChild(member_list.lastElementChild);
     }
-    vehicle_num.setAttribute('value', num1);
+    member_num.setAttribute('value', num1);
   })
 
-  battery.addEventListener('change', ()=> {
-      if (battery.checked){
-      bat_increment.disabled = false;
-      bat_decrement.disabled = false;
+  data = {
+    'data':{
+      'members':['001','002', '003'],
+      '001':{
+        'name':'Ramesh'
+      },
+      '002':{
+        'name':'Japneet'
+      },
+      '003':{
+        'name':'Rajesh'
+      }
     }
-    else{
-      bat_increment.disabled = true;
-      bat_decrement.disabled = true;
-      bat_num.setAttribute('value', '0');
-      bat_list.innerHTML = '';
-    }
-  })
-  accessory.addEventListener('change', ()=> {
-      if (accessory.checked){
-      acc_increment.disabled = false;
-      acc_decrement.disabled = false;
-    }
-    else{
-      acc_decrement.disabled = true;
-      acc_increment.disabled = true;
-      acc_num.setAttribute('value', '0');
-      acc_list.innerHTML = '';
-    }
-  })
+  }
 
-  bat_increment.addEventListener('click', () => {
-    num1 = Number(bat_num.value);
-    num1++;
-    const new_div = document.createElement('div');
-    new_div.classList= 'libtn-grp';
-    const new_input = document.createElement('input');
-    new_input.type = 'text';
-    new_input.classList = 'libtn';
-    new_input.placeholder = 'Battery No.';
-    new_input.id = 'bat_entry'+num1;
-    // const new_quantity = document.createElement('input');
-    // new_quantity.type = 'number';
-    // new_quantity.classList = 'libtn';
-    // new_quantity.id = 'bat_quant'+num1;
-    // new_quantity.setAttribute('min', '0');
-    // new_quantity.setAttribute('max', '100');
-    bat_num.setAttribute('value', num1);
-
-    new_div.appendChild(new_input);
-    // new_div.appendChild(new_quantity);
-    bat_list.appendChild(new_div);
-  })
-
-  bat_decrement.addEventListener('click', () => {
-    num1 = Number(bat_num.value);
-    if (num1 >0){
-      num1= num1-1;
-    }
-    bat_num.setAttribute('value', num1);
-    bat_list.removeChild(bat_list.lastElementChild);
-  })
-
-  acc_increment.addEventListener('click', () => {
-    num1 = Number(acc_num.value);
-    num1++;
-    const new_div = document.createElement('div');
-    new_div.classList= 'libtn-grp';
-    const new_input = document.createElement('input');
-    new_input.type = 'text';
-    new_input.classList = 'libtn';
-    new_input.placeholder = 'Acc Name';
-    new_input.id = 'acc_entry'+num1;
-    const new_quantity = document.createElement('input');
-    new_quantity.type = 'number';
-    new_quantity.classList = 'libtn';
-    new_quantity.id = 'acc_quant'+num1;
-    new_quantity.setAttribute('min', '0');
-    new_quantity.setAttribute('max', '100');
-    acc_num.setAttribute('value', num1);
-
-    new_div.appendChild(new_input);
-    new_div.appendChild(new_quantity);
-    acc_list.appendChild(new_div);
-  })
-
-  acc_decrement.addEventListener('click', () => {
-    num1 = Number(acc_num.value);
-    if (num1 >0){
-      num1= num1-1;
-    }
-    acc_num.setAttribute('value', num1);
-    acc_list.removeChild(acc_list.lastElementChild);
-  })
 </script>
 {% endblock %}

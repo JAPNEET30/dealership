@@ -15,52 +15,70 @@
 
 <form class='forms' method="post" autocomplete="off"> 
   {% csrf_token %}
-  <div>
-    <div><P>Package No.<em>1</em></P></div>
-    <div class="libtn-grp" style="justify-items: stretch;">
-      <label class="libtn-label">Assign task to:</label>
-      <input class="libtn" type="list" list="employee_list" id="employee_select"/>
-      <datalist id="employee_list">
+  <div class="libtn-grp">
+    <P>Package No.<em style="font-weight: 700;">1</em></P>
+  </div>
+  <datalist id="employee_list">
         <option value="Employee 1">
         <option value="Employee 2">
-      </datalist>
-    </div>
-  </div>
-    <div class="libtn-grp">
-      <label class="libtn-label">Note to create order: </label>
-      <!-- <input type="text" placeholder="Note" class='libtn'/> -->
-      <textarea class="libtn"></textarea>
-    </div>
-      <div class="libtn-grp" id="vehicle-num-grp">
+  </datalist>
+  <!-- <section class="libtn-grp">
+      <label class="libtn-label">Assign task to:</label>
+      <input class="libtn" list="employee_list" id="employee_select" placeholder="Select Employee"/>
+  </section> -->
+    <section class="libtn-grp">
+      <label class="libtn-label">Order Note: </label>
+      <textarea class="libtn" style="flex-grow: 1;"></textarea>
+    </section>
+      <section id="vehicle-num-grp">
         <label class="libtn-label" disabled>No. of Vehicles</label>
-        <input id='vehicle_increment' type='button' value='+' class="libtn"/>
-        <input id="vehicle_number" type="number" value="1" min="1" max="100" title="battery_number" disabled/>
+        <div class="libtn-grp">
+          <input id='vehicle_increment' type='button' value='+' class="libtn"/>
+        <input id="vehicle_number" type="number" value="1" min="1" max="100" class="libtn" disabled/>
         <input id='vehicle_decrement' type='button' value='-' class="libtn"/>
-      </div>
-      <div id="vehicle_entry_list" style="flex-direction:column">
-        <div class='libtn-grp'><input type='text' class='libtn' placeholder='Frame No.' id='vehicle_entry1'/>
-        <div class="libtn-grp"><input type='checkbox' class='libtn' id='acc_incl1'/><label for="acc_incl1" class="libtn">Acc. Incl.</label></div>
-        <div class="libtn-grp"><input type='checkbox' class='libtn' id='batt_incl1'/><label for="batt_incl1" class="libtn">Battery Incl.</label></div></div>
-      </div>
+        </div>
+      </section>
+      
+      <section>
+          <label class="libtn-label">Enter Frame number of the vehicles: </label>
+        
+        <div id="vehicle_entry_list" style="flex-direction: column;">
+          <div class="libtn-grp" style="width:100%;">
+            <input type='text' class='libtn' placeholder='Frame No.' id='vehicle_entry1'/>
+            <input type='checkbox' class='libtn' id='acc_incl1'/><label for="acc_incl1" class="libtn">Acc. Incl.</label>
+            <input type='checkbox' class='libtn' id='batt_incl1'/><label for="batt_incl1" class="libtn">Battery Incl.</label>
+          </div>
+        </div>
+      </section>
     
-    <div class='libtn-grp'>
-      <input type='checkbox' class='libtn' id='battery_input'/>
-      <label for='battery_input' class='libtn'>Add Battery</label>
+    <section>
+      <label class="libtn-label">Select if Batteries are in the load:</label>
       <div class="libtn-grp">
+        <input type='checkbox' class='libtn' id='battery_input'/>
+        <label for='battery_input' class='libtn'>Add Battery</label>
         <input id='battery_increment' type='button' value='+' class="libtn" disabled/>
-        <input id="battery_number" type="number" value="0" min="0" max="100" title="battery_number" disabled/>
+        <input id="battery_number" type="number" value="0" min="0" max="100" title="battery_number" class='libtn' disabled/>
         <input id='battery_decrement' type='button' value='-' class="libtn" disabled/>
       </div>
-    </div><div id="battery_list"></div>
-    <div class='libtn-grp'>
-      <input type='checkbox' class='libtn' id='accessory_input'/>
-      <label for='accessory_input' class='libtn'>Add Accessories</label>
+    </section>
+    <div id="battery_list" style="max-width: 100dvw;flex-wrap:wrap;"></div>
+
+    <section class='libtn-grp'>  
+      <label class="libtn-label">Select if Accessories are in the load:</label>
       <div class="libtn-grp">
+        <input type='checkbox' class='libtn' id='accessory_input'/>
+        <label for='accessory_input' class='libtn'>Add Accessories</label>
         <input id='accessory_increment' type='button' value='+' class="libtn" disabled/>
-        <input id="accessory_number" type="number" value="0" min="0" max="100" title="battery_number" disabled/>
+        <input id="accessory_number" type="number" value="0" min="0" max="100" title="battery_number" class='libtn' disabled/>
         <input id='accessory_decrement' type='button' value='-' class="libtn" disabled/>
       </div>
-    </div><div id="acc_list"></div>
+    </section>
+    <div id="acc_list" style="max-width: 100dvw;flex-wrap:wrap;"></div>
+    <section class="libtn-grp">
+      <label class="libtn-label">Assign task to:</label>
+      <input class="libtn" type="text" id="package_total_amount" placeholder="Value of the package"/>
+    </section>
+
     <datalist id="driver_list">
         <option>Loc 1</option>
         <option>Loc 2</option>
@@ -69,19 +87,19 @@
         <option>Loc 1</option>
         <option>Loc 2</option>
       </datalist>
-    <div class=libtn-grp>
+    <section class=libtn-grp>
+      <label class="libtn-label">Select a driver to assign delivery:</label>
       <input type="list" id="driver_entry" list="driver_list" class="libtn" placeholder = 'Select Driver'>
+    </section>
+    <section class="libtn-grp">
+      <label class="libtn-label">Select the location of the delivery:</label>
       <input type="list" id="location_entry" list="location_list" class="libtn" placeholder="Select Location">
-    </div>
+    </section>
     <div class="libtn-grp">
         <input type="submit" value="Start Process" class="libtn"/>
         <input type="reset" value="Reset" class="libtn"/>
     </div>
 </form>
-{% endblock %}
-{% block extra_data %}
-{% comment %} <div><a href="/#" class="libtn" id="sidebar-icon">Current Standing<span></span></a></div>
-<div id="sidebar-content"></div> {% endcomment %}
 {% endblock %}
 {% block extra_scripts %}
 <script>
@@ -140,13 +158,10 @@
     new_label_bat.innerText = 'Battery Incl.';
     new_label_bat.setAttribute('for','batt_incl'+num1);
 
-    new_div_acc.appendChild(new_input_acc);
-    new_div_acc.appendChild(new_label_acc);
-    new_div_bat.appendChild(new_input_bat);
-    new_div_bat.appendChild(new_label_bat);
-
-    new_div.appendChild(new_div_acc);
-    new_div.appendChild(new_div_bat)
+    new_div.appendChild(new_input_acc);
+    new_div.appendChild(new_label_acc);
+    new_div.appendChild(new_input_bat);
+    new_div.appendChild(new_label_bat);
     vehicle_num.setAttribute('value', num1);
     vehicle_list.appendChild(new_div);
 
@@ -234,6 +249,7 @@
     new_quantity.id = 'acc_quant'+num1;
     new_quantity.setAttribute('min', '0');
     new_quantity.setAttribute('max', '100');
+    new_quantity.setAttribute('value', 1);
     acc_num.setAttribute('value', num1);
 
     new_div.appendChild(new_input);
@@ -250,4 +266,19 @@
     acc_list.removeChild(acc_list.lastElementChild);
   })
 </script>
+{% endblock %}
+{% block extra_data %}
+<h5>Instructions</h5>
+<p style='font-size: 12px; padding: 2%;'>The values are as follows:<br>
+  <em style='font-weight: 700;'>Package no:</em> Indicates package number<br>
+  <em style='font-weight: 700;'>Order note:</em> To help the employee understand what kind of package to assign it.<br><br>
+  <em style='font-weight: 700;'>No. of Vehicles:</em> Assign the frame no of the vehicle to the package for transport<br><br>
+  <em style='font-weight: 700;'>Frame No.:</em> Vehicle frame no.<br><br>
+  <em style='font-weight: 700;'>Acc. Incl.:</em> Indicates if the Accessory is included with the vehicle<br><br>
+  <em style='font-weight: 700;'>Battery Incl.:</em> Indicates if the battery is included with the vehicle<br><br>
+  <em style='font-weight: 700;'>Add Battery:</em> Helps assign number of batteries with a battery serial no. for storage into the system.<br><br>
+  <em style='font-weight: 700;'>Add Accessory:</em> Helps assign a certain accessary and its quantity<br><br>
+  <em style='font-weight: 700;'>Select driver:</em> Assign a driver for the job to be completed.<br><br>
+  <em style='font-weight: 700;'>Select Location:</em> Assign a Location for delivery of the package.<br><br>
+</p>
 {% endblock %}
