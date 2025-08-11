@@ -1,4 +1,4 @@
-from tkinter import Frame
+# from tkinter import Frame
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.template import Engine

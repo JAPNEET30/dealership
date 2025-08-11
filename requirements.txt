@@ -4,3 +4,4 @@ django-extensions
 couchbase==4.4
 asyncio
 channels[daphne]
+gunicorn
