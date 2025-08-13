@@ -1,15 +1,9 @@
 {% extends 'registration/base.html' %} {% block content %}
 {% load static %}
 <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-<section >
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-centered">
-        <h1 class="mt-5 mb-3">Login</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt-3">
+<link href="{% static 'css/user.css' %}" rel="stylesheet"/>
+<section>
+      <div id="content">
         <form method="post" action="{% url 'login' %}" class="forms">
           {% csrf_token %}
           <div class="form-group" style="flex-direction: column;">
@@ -39,15 +33,21 @@
           </p>
           {% endfor %} {% endif %}
           <div class="libtn-grp">
-            <button type="submit" class="libtn">
-          <br/>Login</button>
-            <a href="{% url 'register' %}" class="libtn">
-          <br/>Register</a>
+            <input type="submit" class="libtn" value="Login"/>
+            <input href="{% url 'register' %}" class="libtn" value="Register" type="button"/>
           </div>
-          <div>Forgot Password? <a href={% url 'password_reset' %}>Click here,</a> to reset.</div>
+          <div>Forgot Password? <a href="{% url 'password_reset' %}">Click here</a>, to reset.</div>
         </form>
       </div>
-    </div>
+</section>
+<section>
+<div id="login-info">
+    <p>
+      Log in to your Management system. Manage all your data in one place.<br><br>
+      <em style="font-weight:700;">Username: </em>A case sensitive field.<br><br>
+      <em style="font-weight:700;">Password: </em>A case sensitive field which protects your account on the platform.<br>
+    </p>
   </div>
 </section>
+
 {% endblock %}

@@ -111,6 +111,11 @@
 
   --tables-font-color:var(--black);
   --tables-border-color:var(--color-6-1);
+  
+  --footer-color:var(--color-6-2);
+  --footer-font-color:var(--color-6-1);
+
+  --image-bg:var(--color-6-2);
 
 }
 

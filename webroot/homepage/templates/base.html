@@ -37,23 +37,22 @@
     <div>
       <nav class="navi">
         <div>
-          <a href="{% url 'homepage' %}"
-            ><text id="logo">JoraTech<span></span></text
+          <a href="{% url 'homepage' %}"><text id="logo">JoraTech<span></span></text
           ></a>
         </div>
         <div id="links">
           <ul id="link-list" style="justify-content: space-evenly">
             <li class="menulbl libtn" style="width: 7rem">
-              <label style="width: 7rem">Services</label>
+              <a href="{% url 'services' %}" style="width: 7rem">Services</a>
               <ul class="menulist" style="font-size: 15px; max-width: 7rem">
                 <li class="libtn">
-                  <a href="{% url 'index' %}">For Dealership</a>
+                  <a href="{% url 'dealership' %}">For Dealership</a>
                 </li>
-                <li class="libtn"><a href="{% url 'index' %}">For Store</a></li>
+                <li class="libtn"><a href="{% url 'store' %}">For Store</a></li>
               </ul>
             </li>
-            <li class="libtn" style="width: 7rem">Our Legacy</li>
-            <li class="libtn" style="width: 7rem">About us</li>
+            <li style="width: 7rem;"><a class="libtn" href="{% url 'legacy' %}">Our Legacy</a></li>
+            <li style="width: 7rem;"><a class="libtn" href="{% url 'future' %}">Our Future</a></li>
             <li class="libtn-grp" style="margin-left: 2%; width: 10rem">
               <a
                 href="{% url 'index' %}"
@@ -94,7 +93,7 @@
             <ul class="menulist">
               <!-- <li class="libtn"><a href="#">Developer Profile</a><span></span></li> -->
               <li class="libtn">
-                <a href="{% url 'index' %}">For Dealership</a><span></span>
+                <a href="{% url 'dealership' %}">For Dealership</a><span></span>
               </li>
               <!-- <li class="libtn"><a href="#">For Store Owners</a><span></span></li> -->
               <li class="libtn">
@@ -108,7 +107,14 @@
       </nav>
     </div>
     {% block content %} {% endblock %}
-
+<footer>
+    <p>Specialist of:<br>
+    Asset Management Software for business specific needs.</p>
+    <p>Contact-us:<br>
+    <a>Joratech@yahoo.com</a><br>
+    Jortech Software Solutions</p>
+    
+</footer>
     <!-- JS, Popper.js, and jQuery -->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
