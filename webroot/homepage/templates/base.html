@@ -91,18 +91,14 @@
             </svg>
             <span></span>
             <ul class="menulist">
-              <!-- <li class="libtn"><a href="#">Developer Profile</a><span></span></li> -->
-              <li class="libtn">
-                <a href="{% url 'dealership' %}">For Dealership</a><span></span>
-              </li>
-              <!-- <li class="libtn"><a href="#">For Store Owners</a><span></span></li> -->
-              <li class="libtn">
-                <a href="{% url 'index' %}">Login</a><span></span>
-              </li>
-              <li class="libtn">
-                <a href="{% url 'register' %}">Sign up</a><span></span>
-              </li></ul
-          ></label>
+              <li class="libtn"><a href="{% url 'dealership' %}">For Dealership</a><span></span></li>
+              <li class="libtn"><a href="{% url 'store' %}">For Store Owners</a><span></span></li>
+              <li class="libtn"><a href="{% url 'legacy' %}">Our Legacy</a><span></span></li>
+              <li class="libtn"><a href="{% url 'future' %}">Our Future</a><span></span></li>
+              <li class="libtn"><a href="{% url 'index' %}">Login</a><span></span></li>
+              <li class="libtn"><a href="{% url 'register' %}">Sign up</a><span></span></li>
+              </ul>
+            </label>
         </div>
       </nav>
     </div>
