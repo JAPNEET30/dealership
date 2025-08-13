@@ -17,6 +17,7 @@
         padding:1rem;
         margin:1%;
         max-height:50%;
+        box-shadow:0.3rem 0.3rem var(--a-hover-shadow);
         p:nth-child(1){
             max-width: fit-content;
             display:flex;
