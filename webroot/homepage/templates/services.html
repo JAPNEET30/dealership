@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+<link href = "{% static 'css/styles.css' %}" rel="stylesheet">
+<link href = "{% static 'css/legacy.css' %}" rel="stylesheet">
+
+<div class="" id="main">
+    <div class="top-head">
+        <h2>Our expanding portfolio of services</h2>
+    </div>
+    <div id="dealership-service" class="bg-set">
+        <div>
+            <h3>Bheem Dealership Management</h3>
+            <p>A Saas solution to manage all the requirements of a vehicle dealership establishment.</p>
+            <a href="{% url 'index' %}" class="libtn">Try now<span></span></a>
+            <a href="{% url 'dealership' %}" class="libtn">Read More<span></span></a>
+        </div>
+    </div>
+    <div id="technology" class="bg-set">
+        <div>
+            <h3>Switch store manager</h3>
+        <p>An AI based store management with inventory and accounts management system. (Work in progress)</p>
+        <a href="{% url 'store' %}" class="libtn">Read More<span></span></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+#traditional{
+    background-image: image-set('../images/cagewheel169.jpg');
+    justify-items: end;
+    div{
+        background-image:linear-gradient(90deg,transparent,35%, white);
+    }
+}
+
+#dealership-service{
+    background-image: image-set('../images/bheem.png');
+    justify-items: end;
+    div{
+        background-image:linear-gradient(90deg,transparent,35%, white);
+    }
+}
+
+#bheem{
+    display: flex;
+    align-items: end;
+    min-height:30%;
+    width: 100%;
+    margin:8%;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    img{
+        height:30dvh;
+        box-shadow: 0.5rem 0.5rem var(--color-6-2);
+        border-radius: 5px;
+    }
+    p{
+        box-sizing: border-box;
+        padding:5%;
+        height: 100%;
+    }
+}
+
+#technology{
+    background-image:image-set('../images/code219.jpg');
+    justify-items: start;
+    div{
+        background-image:linear-gradient(270deg,transparent,35%, white);
+    }
+}
+
+#ai-solutions{
+    background-image:image-set('../images/code219.jpg');
+    justify-items: start;
+    div{
+        background-image:linear-gradient(270deg,transparent,35%, white);
+    }
+}
+
+#smartphones{
+    background-image:image-set('../images/code219.jpg');
+    justify-items: start;
+    div{
+        background-image:linear-gradient(270deg,transparent,35%, white);
+    }
+}
+#traditional-ai{
+    background-image:image-set('../images/garage169.jpg');
+    justify-items: end;
+    div{
+        background-image:linear-gradient(90deg,transparent,35%, white);
+    }
+}
+
+.bg-set{
+    background-blend-mode:multiply;
+    background-color: gray;
+    background-size: cover;
+    height:45%;
+    width:100%;
+    justify-items: end;
+    display:flow;
+    background-repeat:no-repeat;
+    div{
+        height:100%;
+        width:50%;
+        padding:10%;
+    }
+}
+
+.top-head{
+    height: 20%;
+    margin:5%;
+    justify-items: center;
+}
+
+#main{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+}
+
+footer{
+    padding:5%;
+    background-color:var(--footer-color);
+    color:var(--footer-font-color);
+}

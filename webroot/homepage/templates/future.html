@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+<link href = "{% static 'css/styles.css' %}" rel="stylesheet">
+<link href = "{% static 'css/legacy.css' %}" rel="stylesheet">
+
+<div class="" id="main">
+    <div class="top-head">
+        <h2>Your Vision, Our Solution</h2>
+    </div>
+    <div id="ai-solutions" class="bg-set">
+        <div>
+            <h3>Venturing into AI based solutions</h3>
+            <p>
+            Our vision is to enable customers with AI systems in everyday tasks.<br>
+            AI can carryout tasks and also cross check them with existing data for reliability.
+            </p>
+        </div>
+    </div>
+    <div id="traditional-ai" class="bg-set">
+        <div>
+            <h3>Traditional with technology</h3>
+        <p>To bring easy of use, solutions for traditional businesses.</p>
+        </div>
+    </div>
+    <div id="smartphones" class="bg-set">
+        <div>
+            <h3>Portable AI systems</h3>
+        <p>Expanding smartphone market brings new challenges. <br>
+        We are ready to face these challenges to bring innovation into it.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

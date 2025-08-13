@@ -1,0 +1,49 @@
+#traditional{
+    background-image: image-set('../images/cagewheel169.jpg');
+    justify-items: end;
+    div{
+        background-image:linear-gradient(90deg,transparent,35%, white);
+    }
+}
+#technology{
+    background-image:image-set('../images/code219.jpg');
+    justify-items: start;
+    div{
+        background-image:linear-gradient(270deg,transparent,35%, white);
+    }
+}
+
+.bg-set{
+    background-blend-mode:multiply;
+    background-color: gray;
+    background-size: cover;
+    height:45%;
+    width:100%;
+    justify-items: end;
+    display:flow;
+    background-repeat:no-repeat;
+    div{
+        height:100%;
+        width:50%;
+        padding:10%;
+    }
+}
+
+.top-head{
+    height: 20%;
+    margin:5%;
+    justify-items: center;
+}
+
+#main{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction: column;
+}
+
+footer{
+    padding:5%;
+    background-color:var(--footer-color);
+    color:var(--footer-font-color);
+}

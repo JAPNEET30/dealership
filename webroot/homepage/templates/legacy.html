@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+<link href = "{% static 'css/styles.css' %}" rel="stylesheet">
+<link href = "{% static 'css/legacy.css' %}" rel="stylesheet">
+
+<div class="" id="main">
+    <div class="top-head">
+        <h2>From Traditional to Technological</h2>
+    <h4>We have been serving Businesses since 1981.</h4>
+    </div>
+    <div id="traditional" class="bg-set">
+        <div>
+            <h3>Khalsa Agro Engineering Industries</h3>
+            <p>
+            A traditional business mastering in metal works, agro tech, and other specialized works.
+            </p>
+        </div>
+    </div>
+    <div id="technology" class="bg-set">
+        <div>
+            <h3>JoraTech Software Solutions</h3>
+        <p>A moder business to cater to management system requirements.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
