@@ -124,8 +124,16 @@ def sub_history(request):
             data_to_json['data'].append(temp)
         return render(request, 'subscription/subscription_history.html', {'data': json.dumps(data_to_json)})
     
+@login_required
 def sub_history_detail(request, sub_data):
     if request.method=='GET':
         return render(request, 'subscription/sub_history_detail.html', {'data': sub_data})
     else:
         return redirect('index')
+
+
+def email_confirm(request):
+    if request.method=='GET':
+        return render(request, '')
+    else:
+        return redirect('login')
