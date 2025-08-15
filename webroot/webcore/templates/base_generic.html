@@ -16,7 +16,7 @@
         {% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> {% endcomment %}
         {% load static %}
         <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
-        <link rel="icon" href="{% static 'images/JT2.ico' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
         <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     </head>
     <!-- Google tag (gtag.js) -->
@@ -31,7 +31,8 @@
     <body>
         <div>
             <nav class="navi">
-                <div><a href="{% url 'index' %}" style='text-decoration:none'><text id="logo">JoraTech<span></span></text></a></div>
+                <div>
+                    <a href="{% url 'index' %}" style='text-decoration:none' id="logo"><text style="align-items:center;"><img src="{% static 'images/favicon.ico'%}" alt="logo" style="height:1.9rem;aspect-ratio:1;margin-bottom:-0.4rem;"/>JoraTech</text><span></span></a></div>
                 <div id="links">
                     <ul id="link-list">
                         <li><a href="{% url 'index' %}" class="libtn navlinks">
@@ -47,7 +48,10 @@
                     </ul>
                     <div class='menulbl profile'>
                         <div><p>{{ user.get_full_name }}</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-504.62q-49.5 0-84.75-35.25T360-624.62q0-49.5 35.25-84.75T480-744.62q49.5 0 84.75 35.25T600-624.62q0 49.5-35.25 84.75T480-504.62ZM200-215.38v-65.85q0-24.77 14.42-46.35 14.43-21.57 38.81-33.5 56.62-27.15 113.31-40.73 56.69-13.57 113.46-13.57 56.77 0 113.46 13.57 56.69 13.58 113.31 40.73 24.38 11.93 38.81 33.5Q760-306 760-281.23v65.85H200Zm40-40h480v-25.85q0-13.31-8.58-25-8.57-11.69-23.73-19.77-49.38-23.92-101.83-36.65-52.45-12.73-105.86-12.73t-105.86 12.73Q321.69-349.92 272.31-326q-15.16 8.08-23.73 19.77-8.58 11.69-8.58 25v25.85Zm240-289.24q33 0 56.5-23.5t23.5-56.5q0-33-23.5-56.5t-56.5-23.5q-33 0-56.5 23.5t-23.5 56.5q0 33 23.5 56.5t56.5 23.5Zm0-80Zm0 369.24Z"/></svg>
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-504.62q-49.5 0-84.75-35.25T360-624.62q0-49.5 35.25-84.75T480-744.62q49.5 0 84.75 35.25T600-624.62q0 49.5-35.25 84.75T480-504.62ZM200-215.38v-65.85q0-24.77 14.42-46.35 14.43-21.57 38.81-33.5 56.62-27.15 113.31-40.73 56.69-13.57 113.46-13.57 56.77 0 113.46 13.57 56.69 13.58 113.31 40.73 24.38 11.93 38.81 33.5Q760-306 760-281.23v65.85H200Zm40-40h480v-25.85q0-13.31-8.58-25-8.57-11.69-23.73-19.77-49.38-23.92-101.83-36.65-52.45-12.73-105.86-12.73t-105.86 12.73Q321.69-349.92 272.31-326q-15.16 8.08-23.73 19.77-8.58 11.69-8.58 25v25.85Zm240-289.24q33 0 56.5-23.5t23.5-56.5q0-33-23.5-56.5t-56.5-23.5q-33 0-56.5 23.5t-23.5 56.5q0 33 23.5 56.5t56.5 23.5Zm0-80Zm0 369.24Z"/></svg> -->
+                             <svg style="height: 2rem; width: 2rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
                         </div>
                         <ul class="menulist" style="font-size: 1rem;">
                             <li><a href="{% url 'profile'%}" class="libtn">Profile<span></span></a></li>
@@ -58,7 +62,7 @@
                 </div>
                 <div class="menulist">
                     <label class="libtn menulbl">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M160-269.23v-40h640v40H160ZM160-460v-40h640v40H160Zm0-190.77v-40h640v40H160Z"/></svg>
+                        <svg style="height: 2rem; width: 2rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#000000"><path d="M160-269.23v-40h640v40H160ZM160-460v-40h640v40H160Zm0-190.77v-40h640v40H160Z"/></svg>
                         <span></span>
                         <ul class="menulist">
                             <li class="libtn"><a href="{% url 'index' %}">Dashboard</a><span></span></li>
@@ -68,9 +72,16 @@
                             <li class="libtn"><a href="{% url 'insurance'%}">Insurance</a><span></span></li>
                             <li class="libtn"><a href="{% url 'teams'%}">Teams</a><span></span></li>
                             <li class="libtn"><a href="{% url 'service'%}">Service</a><span></span></li>
+                    </ul></label>
+                    <label class="libtn menulbl">
+                        <svg style="height: 2rem; width: 2rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+                        <ul class="menulist">
                             <li class="libtn"><a href="{% url 'profile' %}">Profile</a><span></span></li>
                             <li class="libtn"><a href="{% url 'logout'%}">Logout</a><span></span></li>
-                    </ul></label>
+                        </ul>
+                    </label>
                 </div>
             </nav>
         </div>

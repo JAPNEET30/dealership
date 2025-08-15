@@ -23,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=Moderustic:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="{% static 'images/JT2.ico' %}" type="image/x-icon" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
   </head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMC5696ZE4"></script>
 <script>
@@ -37,13 +37,20 @@
     <div>
       <nav class="navi">
         <div>
-          <a href="{% url 'homepage' %}"><text id="logo">JoraTech<span></span></text
-          ></a>
-        </div>
+                    <a href="{% url 'homepage' %}" style='text-decoration:none' id="logo"><text style="align-items:center;"><img src="{% static 'images/favicon.ico'%}" alt="logo" style="height:1.9rem;aspect-ratio:1;margin-bottom:0.3rem;"/>JoraTech</text><span></span></a></div>
+
         <div id="links">
           <ul id="link-list" style="justify-content: space-evenly">
+            <li style="width: 8rem;"><a class="libtn" href="{% url 'services' %}">Our Services</a></li>
+            <li style="width: 7rem;"><a class="libtn" href="{% url 'legacy' %}">Our Legacy</a></li>
+            <li style="width: 7rem;"><a class="libtn" href="{% url 'future' %}">Our Future</a></li>
+            <span id="home-nav-divide"></span>
             <li class="menulbl libtn" style="width: 7rem">
-              <a href="{% url 'services' %}" style="width: 7rem">Services</a>
+              <a href="#" style="width: 7rem; color:black;">Products
+                <svg style="height:1rem; width:1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </a>
               <ul class="menulist" style="font-size: 15px; max-width: 7rem">
                 <li class="libtn">
                   <a href="{% url 'dealership' %}">For Dealership</a>
@@ -51,32 +58,20 @@
                 <li class="libtn"><a href="{% url 'store' %}">For Store</a></li>
               </ul>
             </li>
-            <li style="width: 7rem;"><a class="libtn" href="{% url 'legacy' %}">Our Legacy</a></li>
-            <li style="width: 7rem;"><a class="libtn" href="{% url 'future' %}">Our Future</a></li>
             <li class="libtn-grp" style="margin-left: 2%; width: 10rem">
-              <a
-                href="{% url 'index' %}"
-                class="libtn"
-                style="
-                  justify-content: center;
-                  background-color: var(--color-6-1);
-                  color: white;
-                "
-                >Login</a
-              >
-              <a
-                class="libtn"
-                href="{% url 'register' %}"
-                style="
-                  justify-content: center;
-                  background-color: var(--color-6-5);
-                "
-                >Sign up</a
-              >
+              <a href="{% url 'index' %}" class="libtn" id="login-icon">
+                <svg style="height:2rem; width:2rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg><p>Login</p>
+              </a>
             </li>
           </ul>
         </div>
         <div class="menulist">
+          <a href="{% url 'index' %}" style="border-radius:100%; box-sizing: border-box;" class="libtn"><svg style="height:2rem; width:2rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg></a>
+            
           <label class="libtn menulbl navlinks">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -94,21 +89,19 @@
               <li class="libtn"><a href="{% url 'dealership' %}">For Dealership</a><span></span></li>
               <li class="libtn"><a href="{% url 'store' %}">For Store Owners</a><span></span></li>
               <li class="libtn"><a href="{% url 'legacy' %}">Our Legacy</a><span></span></li>
-              <li class="libtn"><a href="{% url 'future' %}">Our Future</a><span></span></li>
-              <li class="libtn"><a href="{% url 'index' %}">Login</a><span></span></li>
-              <li class="libtn"><a href="{% url 'register' %}">Sign up</a><span></span></li>
-              </ul>
-            </label>
+              <li class="libtn"><a href="{% url 'future' %}">Our Future</a><span></span></li></ul></label>
         </div>
       </nav>
     </div>
     {% block content %} {% endblock %}
 <footer>
-    <p>Specialist of:<br>
-    Asset Management Software for business specific needs.</p>
     <p>Contact-us:<br>
     <a>Joratech@yahoo.com</a><br>
-    Jortech Software Solutions</p>
+    Jortech Software Solutions <br>
+  <a href="{% url 'future' %}" class="libtn">Our Future<span></span></a><br>
+  <a href="{% url 'legacy' %}" class="libtn">Our Legacy<span></span></a>
+  </p>
+
     
 </footer>
     <!-- JS, Popper.js, and jQuery -->

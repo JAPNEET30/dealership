@@ -14,6 +14,7 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
   </head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMC5696ZE4"></script>
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -23,7 +24,8 @@
 </script>
   <body>
     <nav class="navi">
-      <div><a href="{% url 'homepage' %}" style='text-decoration:none' id="logo">JoraTech<span></span></a></div>
+      <div>
+                    <a href="{% url 'homepage' %}" style='text-decoration:none' id="logo"><text style="align-items:center;"><img src="{% static 'images/favicon.ico'%}" alt="logo" style="height:1.9rem;aspect-ratio:1;margin-bottom:0.3rem;"/>JoraTech</text><span></span></a></div>
     </nav>
 
     <div id="main" class="login-main">

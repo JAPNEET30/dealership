@@ -6,6 +6,31 @@
     }
 }
 
+#traditional-solutions{
+
+    background-image: image-set('../images/elecDesign.jpg');
+    justify-items: center;
+    div{
+        padding:15%;
+        width: 100%;
+        background-image:linear-gradient(0deg, white,transparent, white);
+        text-align: center;
+        color:var(--white);
+    }
+}
+
+#traditional-solutions-2{
+    background-image: image-set('../images/code219.jpg');
+    justify-items: center;
+    div{
+        padding:15%;
+        width:100%;
+        background-image:linear-gradient(0deg, white,transparent, white);
+        text-align:center;
+        color:var(--white);
+    }
+}
+
 #dealership-service{
     background-image: image-set('../images/bheem.png');
     justify-items: end;
@@ -16,22 +41,22 @@
 
 #bheem{
     display: flex;
-    align-items: end;
+    align-items: center;
     min-height:30%;
     width: 100%;
-    margin:8%;
     box-sizing: border-box;
     overflow-y: hidden;
     flex-wrap: wrap;
-    img{
+    /* img{
         height:30dvh;
         box-shadow: 0.5rem 0.5rem var(--color-6-2);
         border-radius: 5px;
-    }
+    } */
     p{
         box-sizing: border-box;
-        padding:5%;
+        padding:10%;
         height: 100%;
+
     }
 }
 
@@ -99,4 +124,100 @@ footer{
     padding:5%;
     background-color:var(--footer-color);
     color:var(--footer-font-color);
+}
+
+@keyframes carosel{
+    0%{
+        transition: 2s;
+        left:66dvw;
+    }
+    25%{
+        transition: 3s;
+        left:0dvw;
+    }
+
+    50%{
+        transition: 3s;
+        left:-66dvw;
+    }
+
+    75%{
+        transition: 3s;
+        left:0dvw;
+    }
+
+    100%{
+        transition: 3s;
+        left:66dvw;
+    }
+}
+
+@keyframes carosel2{
+    0%{
+        transition: 2s;
+        left:110dvw;
+    }
+    25%{
+        transition: 3s;
+        left:0dvw;
+    }
+
+    50%{
+        transition: 3s;
+        left:-110dvw;
+    }
+
+    75%{
+        transition: 3s;
+        left:0dvw;
+    }
+
+    100%{
+        transition: 3s;
+        left:110dvw;
+    }
+}
+
+
+nav{
+    z-index:1;
+}
+
+@media screen and (max-width=900px) {
+
+    .product_carosel{
+        height: 10dvh;
+        column-gap: 5rem;
+        img{
+            animation:carosel2 20s infinite;
+        }
+    }
+}
+
+.product_carosel{
+    display:flex;
+    flex-direction:row;
+    column-gap: 10rem;
+    overflow:hidden;
+    height:50dvh;
+    width:100%;
+    justify-content: center;
+    aspect-ratio: 16 9;
+
+
+    img{
+        z-index: 0;
+        position: relative;
+        animation: carosel 20s infinite;
+        height: 100%;
+        display:block;
+    }
+
+}
+
+.product_carosel:hover{
+    overflow-x: scroll;
+    img{
+        animation-play-state:paused;
+    }
 }

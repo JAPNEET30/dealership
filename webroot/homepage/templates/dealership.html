@@ -8,9 +8,13 @@
         <h2>Bheem Dealership Management</h2>
     </div>
     <div id="bheem">
-        <img src="{% static 'images/bheem.png' %}" height="100%" alt="bheem-dashboard"/>
+        <section class="product_carosel">
+            <img src="{% static 'images/bheem.png' %}" alt="bheem-dashboard"/>
+            <img src="{% static 'images/load_ss.png' %}" alt="bheem-loads-page"/>
+            <img src="{% static 'images/teams_ss.png' %}" alt="bheem-teams-page"/>
+        </section>
         <p>
-        A Feature loaded system to manage all your requirments.<br>
+        A Feature loaded system to manage all your requirements.<br>
         From customer feedback to stock management.<br>
         (Work in progress)<br>
         <a href="{% url 'index' %}" class="libtn">Try now<span></span></a>

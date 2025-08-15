@@ -12,7 +12,11 @@ section{
     flex-grow:1;
 }
 .navi{
-    height:9dvh;
+    height:8dvh;
+}
+#main{
+    margin-top:8dvh;
+    height: -webkit-fill-available;
 }
 
 @media screen and (max-width:1000px){
@@ -22,6 +26,5 @@ section{
         section{
             max-width:100%;
         }
-        height: -webkit-fill-available;
     }
 }

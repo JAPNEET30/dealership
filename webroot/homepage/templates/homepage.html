@@ -2,14 +2,28 @@
 {% block content %}
 {%load static%}
 <link href = "{% static 'css/styles.css' %}" rel="stylesheet">
-<link href = "{% static 'css/homepage.css' %}" rel="stylesheet">
+<link href = "{% static 'css/legacy.css' %}" rel="stylesheet">
 
 <div class="" id="main">
-    <a href="{% url 'index' %}" id="dealership" class="libtn">
-        Dealership Owner
-    </a>
-    <a href="#" id="store" class="libtn">
-        Store Owner
-    </a>
+    <div class="top-head">
+        <h2>Asset management experts for business management experts.</h2>
+    </div>
+    <div id="traditional-solutions" class="bg-set">
+        <div>
+            <h3>Everlasting Solutions for everyday business problems</h3>
+            <p>
+            We develop newer solutions for everyday business problems.
+            </p>
+        </div>
+    </div>
+    <div id="traditional-solutions-2" class="bg-set">
+        <div>
+            <h3>Assurance of Satisfaction</h3>
+        <p>We give our best at every problem. Ready for every problem.</p>
+        </div>
+    </div>
+    <div>
+        
+    </div>
 </div>
 {% endblock %}
