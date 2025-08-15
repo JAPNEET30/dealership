@@ -111,6 +111,12 @@
 
   --tables-font-color:var(--black);
   --tables-border-color:var(--color-6-1);
+  --footer-color:var(--color-6-2);
+  --footer-font-color:var(--color-6-1);
+
+  --login-icon-color-1:var(--color-6-1);
+  --login-icon-color-2:var(--color-6-2);
+  --login-icon-grad-angle:90deg;
 
 }
 
@@ -138,7 +144,7 @@ nav{
   padding-inline: 5%;
   background-color: var(--navbar-color);
   overflow-y: visible;
-  max-height:8dvh;
+  max-height:9dvh;
   ul{
       display: flex;
       list-style: none;
@@ -320,17 +326,18 @@ nav{
 .menulist{
   display:none;
   transition:ease 0.4s;
+  flex-direction: row;
   justify-content: end;
   background-color: var(--menu-list-bg-color);
   border-radius:0px 0px 10px 10px;
   .libtn{
-      
       padding-bottom:10px;
       margin-left:0%;
   }
 }
 
 .menulbl{
+
   ul{
       display:none;
       flex-direction:column;
@@ -343,6 +350,9 @@ nav{
   }
 }
 .menulbl:hover{ 
+    height:fit-content;
+    max-height:95dvh;
+    overflow-x:hidden;
   background-color: var(--menulbl-hover-color);
   color:var(--color-3-5);
   transform:none;
@@ -587,10 +597,11 @@ fieldset{
         margin:7%;
     }
     svg{
+        box-sizing: border-box;
         background-color: var(--color-3-1);
-        border-radius:5px;
-        border:solid 2px var(--color-3-3);
-        margin: 2px;
+        border-radius:100%;
+        /* border:solid 2px var(--color-3-3); */
+        margin-left: 5%;
     }
 }
 
@@ -609,7 +620,7 @@ fieldset{
       display:flex;
   }
   .menulist{
-      display:block;
+      display:flex;
   }
 
   #main{
@@ -654,4 +665,38 @@ fieldset{
     svg{
      fill: var(--black);
     }
+}
+
+#login-icon{
+    width:fit-content;
+    padding:2%;
+    border-color: #000000;
+    color:var(--black);
+    border-radius:5px;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    span{
+        height:100%;
+        width:2px;
+        background-color: #000000;
+    }
+    p{
+        margin:0%;
+        align-self: center;
+    }
+}
+
+#login-icon:hover{
+        /* background-image: linear-gradient(var(--login-icon-grad-angle), var(--login-icon-color-1), var(--login-icon-color-2)); */
+        p{
+            color:var(--black);
+        }
+    }
+
+#home-nav-divide{
+    height:100%;
+    width:2px;
+    background-color: var(--black);
+    margin-inline: 1rem;
 }
