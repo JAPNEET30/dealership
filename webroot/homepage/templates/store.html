@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 {%load static%}
-<link href = "{% static 'css/homepage.css' %}" rel="stylesheet">
 <link href = "{% static 'css/styles.css' %}" rel="stylesheet">
-<div class="" id="main">
-    <a href="{% url 'index' %}" id="dealership" class="libtn">
-        Dealership Owner
-    </a>
-    <a href="#" id="store" class="libtn">
-        Store Owner
-    </a>
+<link href = "{% static 'css/legacy.css' %}" rel="stylesheet">
+<div id="main">
+    <div class="top-head">
+        <h2>Switch Store Management</h2>
+    </div>
+    <div id="bheem">
+        <p>
+        A Feature loaded system to manage all your requirments at a store.<br>
+        From stock management to smart account management.<br>
+        (Work in progress)<br>
+        <a class="libtn">Work In Progress<span></span></a>
+    </p>
+    </div>
 </div>
-
 {% endblock %}
